@@ -1,5 +1,22 @@
+<script setup lang="ts">
+
+useHead({
+  htmlAttrs: {
+    lang: 'en',
+  },
+  titleTemplate: title => title ? `${title} · Watchlist` : 'Watchlist',
+  meta: [
+    { name: 'description', content: 'A Watchlist based on TMDB' },
+  ],
+});
+</script>
+
 <template>
   <div>
-    <h1>Hello watchlist</h1>
+    <!-- <TheNav /> -->
+    <main class="container p-4 mx-auto">
+      <NuxtPage />
+    </main>
+    <!-- <TheFooter /> -->
   </div>
 </template>
