@@ -14,9 +14,7 @@ useHead({
 <template>
   <div>
     <!-- <TheNav /> -->
-    <main class="container p-4 mx-auto">
-      <NuxtPage />
-    </main>
+    <NuxtPage />
     <!-- <TheFooter /> -->
   </div>
 </template>
