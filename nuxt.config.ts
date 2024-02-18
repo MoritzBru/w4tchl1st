@@ -9,6 +9,22 @@ export default defineNuxtConfig({
   alias: {
     pinia: '/node_modules/@pinia/nuxt/node_modules/pinia/dist/pinia.mjs',
   },
+  app: {
+    head: {
+      link: [
+        { rel: 'icon', type: 'image/svg+xml', href: 'favicon.svg' },
+        { rel: 'apple-touch-icon', sizes: '180x180', href: 'apple-touch-icon.png' },
+        { rel: 'mask-icon', color: '#6366f1', href: 'mask-icon.svg' },
+        { rel: 'manifest', href: 'site.webmanifest' },
+      ],
+      meta: [
+        { name: 'theme-color', content: '#6366f1' },
+      ],
+    },
+  },
+  ui: {
+    icons: 'all',
+  },
   runtimeConfig: {
     public: {
       baseUrl: 'http://localhost:3000',
