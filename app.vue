@@ -13,8 +13,8 @@ useHead({
 
 <template>
   <div>
-    <!-- <TheNav /> -->
+    <TheHeader />
     <NuxtPage />
-    <!-- <TheFooter /> -->
+    <TheFooter />
   </div>
 </template>

@@ -14,7 +14,9 @@
     "lint:config": "eslint --print-config app.vue > my-config.json"
   },
   "dependencies": {
+    "@iconify/json": "^2.2.183",
     "@nuxt/ui": "^2.13.0",
+    "@pinia/nuxt": "^0.5.1",
     "@vueuse/nuxt": "^10.7.2",
     "nuxt": "^3.10.1",
     "vue": "^3.4.15",
@@ -22,7 +24,6 @@
   },
   "devDependencies": {
     "@nuxt/eslint-config": "^0.2.0",
-    "@pinia/nuxt": "^0.5.1",
     "@stylistic/eslint-plugin": "^1.6.2",
     "eslint": "^8.56.0",
     "typescript": "^5.3.3",

@@ -23,7 +23,7 @@ export default defineNuxtConfig({
     },
   },
   ui: {
-    icons: 'all',
+    icons: ['ph'],
   },
   runtimeConfig: {
     public: {

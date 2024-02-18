@@ -14,13 +14,13 @@ export const useAuthStore = defineStore('auth', () => {
 
   const isAuthenticated = computed(() => Boolean(accessToken.value && accessToken.value));
 
-  const runtimeConfig = useRuntimeConfig();
+  const { tmdbBaseUrl, tmdbToken, baseUrl } = useRuntimeConfig();
 
   const route = useRoute();
 
   const defaultParams = {
-    baseURL: runtimeConfig.public.tmdbBaseUrl,
-    headers: { Authorization: `Bearer ${runtimeConfig.public.tmdbToken}` },
+    baseURL: tmdbBaseUrl,
+    headers: { Authorization: `Bearer ${tmdbToken}` },
     method: 'POST',
   };
 
@@ -28,12 +28,11 @@ export const useAuthStore = defineStore('auth', () => {
     const params = {
       ...defaultParams,
       body: {
-        redirect_to: `${runtimeConfig.public.baseUrl}${route.path}?validated`,
+        redirect_to: `${baseUrl}${route.path}?validated`,
       },
     };
     const response = await $fetch('/4/auth/request_token', params);
     if (response?.success) {
-      console.log('🟣 ~ createRequestToken ~ response?.success:', response?.success);
       requestToken.value = response.request_token;
     }
   }
