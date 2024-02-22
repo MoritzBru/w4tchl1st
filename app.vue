@@ -12,9 +12,17 @@ useHead({
 </script>
 
 <template>
-  <div>
-    <TheHeader />
+  <NuxtLoadingIndicator />
+  <NuxtLayout>
     <NuxtPage />
-    <TheFooter />
-  </div>
+  </NuxtLayout>
+  <UNotifications />
 </template>
+
+<style>
+html, body , #__nuxt{
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+</style>

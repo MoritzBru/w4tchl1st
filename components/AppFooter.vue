@@ -1,13 +1,9 @@
-<script setup lang="ts">
-
-</script>
-
 <template>
   <footer class="p-8">
     <div class="container mx-auto flex flex-col gap-3">
-      <p class="text-2xl flex items-center gap-4">
+      <p class="text-xl flex items-center gap-4">
         <IconWatchlist class="size-6" />
-        Watchlist
+        <span class="font-semibold">Watchlist</span>
       </p>
       <p class="flex items-center gap-4">
         Made by

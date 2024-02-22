@@ -1,10 +1,12 @@
 <script setup lang="ts">
+import type { MediaType } from '~/types';
 
 definePageMeta({
   key: route => route.fullPath,
   validate: ({ params }) => {
-    return ['movie', 'tv'].includes(params.type);
+    return ['movie', 'tv'].includes(params.type as MediaType);
   },
+  middleware: 'auth',
 });
 
 const route = useRoute();
