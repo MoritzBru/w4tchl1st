@@ -23,7 +23,7 @@ const colorModeOptions = [
   },
 ];
 
-const currentColorModeIdx = computed(() => colorModeOptions.findIndex(option => option.preference === colorMode.preference));
+const currentColorModeIdx = computed(() => colorModeOptions.findIndex((option) => option.preference === colorMode.preference));
 const nextColorModeIdx = computed(() => (currentColorModeIdx.value + 1) % colorModeOptions.length);
 
 function switchColorMode() {

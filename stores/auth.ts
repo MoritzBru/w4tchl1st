@@ -1,5 +1,7 @@
 import { useLocalStorage } from '@vueuse/core';
-import type { RequestTokenV4, AccessTokenV4 } from '~/types';
+import type {
+  RequestTokenV4, AccessTokenV4,
+} from '~/types';
 import { TMDB_AUTH_ACCESS_URL } from '~/constants/auth';
 
 export const useAuthStore = defineStore('auth', () => {
@@ -27,9 +29,7 @@ export const useAuthStore = defineStore('auth', () => {
   async function createRequestToken() {
     const params = {
       ...defaultParams,
-      body: {
-        redirect_to: `${runtimeConfig.public.baseUrl}/login?validated`,
-      },
+      body: { redirect_to: `${runtimeConfig.public.baseUrl}/login?validated` },
     };
     const response = await $fetch<RequestTokenV4>('/4/auth/request_token', params);
     if (response?.success) {
@@ -41,9 +41,7 @@ export const useAuthStore = defineStore('auth', () => {
   async function createAccessToken() {
     const params = {
       ...defaultParams,
-      body: {
-        request_token: requestToken.value,
-      },
+      body: { request_token: requestToken.value },
     };
     const response = await $fetch<AccessTokenV4>('/4/auth/access_token', params);
     if (response?.success) {
@@ -58,9 +56,7 @@ export const useAuthStore = defineStore('auth', () => {
     const params = {
       ...defaultParams,
       method: 'DELETE' as const,
-      body: {
-        access_token: accessToken.value,
-      },
+      body: { access_token: accessToken.value },
     };
     const response = await $fetch<AccessTokenV4>('/4/auth/access_token', params);
     if (response?.success) {

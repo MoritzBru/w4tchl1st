@@ -2,9 +2,12 @@
 import type { MediaType } from '~/types';
 
 definePageMeta({
-  key: route => route.fullPath,
+  key: (route) => route.fullPath,
   validate: ({ params }) => {
-    return ['movie', 'tv'].includes(params.type as MediaType);
+    return [
+      'movie',
+      'tv',
+    ].includes(params.type as MediaType);
   },
   middleware: 'auth',
 });
@@ -12,9 +15,7 @@ definePageMeta({
 const route = useRoute();
 const type = computed(() => route.params.type || 'movie');
 
-useHead({
-  title: type.value === 'movie' ? 'Movies' : 'TV Shows',
-});
+useHead({ title: type.value === 'movie' ? 'Movies' : 'TV Shows' });
 
 </script>
 

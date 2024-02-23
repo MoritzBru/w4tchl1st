@@ -1,11 +1,7 @@
 <script setup lang="ts">
-definePageMeta({
-  middleware: 'auth',
-});
+definePageMeta({ middleware: 'auth' });
 
-useHead({
-  title: 'Search',
-});
+useHead({ title: 'Search' });
 </script>
 
 <template>

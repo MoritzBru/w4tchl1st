@@ -1,11 +1,7 @@
 <script setup lang="ts">
-definePageMeta({
-  layout: 'plain',
-});
+definePageMeta({ layout: 'plain' });
 
-useHead({
-  title: 'Login',
-});
+useHead({ title: 'Login' });
 
 const authStore = useAuthStore();
 
