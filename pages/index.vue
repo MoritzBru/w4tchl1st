@@ -1,16 +1,23 @@
+<script setup lang="ts">
+const trendingMovies = getTrending('movie');
+const trendingTV = getTrending('tv');
+</script>
+
 <template>
-  <UContainer>
-    <h1>home</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur iure perferendis, nobis rem inventore ut minima dignissimos quis culpa modi libero corporis itaque? Alias labore, maxime distinctio vitae non quam?</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur iure perferendis, nobis rem inventore ut minima dignissimos quis culpa modi libero corporis itaque? Alias labore, maxime distinctio vitae non quam?</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur iure perferendis, nobis rem inventore ut minima dignissimos quis culpa modi libero corporis itaque? Alias labore, maxime distinctio vitae non quam?</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur iure perferendis, nobis rem inventore ut minima dignissimos quis culpa modi libero corporis itaque? Alias labore, maxime distinctio vitae non quam?</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur iure perferendis, nobis rem inventore ut minima dignissimos quis culpa modi libero corporis itaque? Alias labore, maxime distinctio vitae non quam?</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur iure perferendis, nobis rem inventore ut minima dignissimos quis culpa modi libero corporis itaque? Alias labore, maxime distinctio vitae non quam?</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur iure perferendis, nobis rem inventore ut minima dignissimos quis culpa modi libero corporis itaque? Alias labore, maxime distinctio vitae non quam?</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur iure perferendis, nobis rem inventore ut minima dignissimos quis culpa modi libero corporis itaque? Alias labore, maxime distinctio vitae non quam?</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur iure perferendis, nobis rem inventore ut minima dignissimos quis culpa modi libero corporis itaque? Alias labore, maxime distinctio vitae non quam?</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur iure perferendis, nobis rem inventore ut minima dignissimos quis culpa modi libero corporis itaque? Alias labore, maxime distinctio vitae non quam?</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur iure perferendis, nobis rem inventore ut minima dignissimos quis culpa modi libero corporis itaque? Alias labore, maxime distinctio vitae non quam?</p>
-  </UContainer>
+  <main class="my-4">
+    <h2 class="text-xl py-3 px-10">
+      Trending Movies
+    </h2>
+    <CarouselBase
+      type="movie"
+      :items="trendingMovies.data.value?.results || []"
+    />
+    <h2 class="text-xl py-3 px-10 mt-12">
+      Trending TV Shows
+    </h2>
+    <CarouselBase
+      type="tv"
+      :items="trendingTV.data.value?.results || []"
+    />
+  </main>
 </template>

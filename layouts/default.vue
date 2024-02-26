@@ -1,7 +1,7 @@
 <template>
-  <div class="app-grid grid grid-rows-[auto_1fr] h-full">
-    <AppHeader class="order-last sm:order-none" />
-    <div class="app-page overflow-x-hidden overflow-y-auto relative">
+  <div>
+    <AppHeader class="fixed bottom-0 sm:top-0 z-10" />
+    <div class="pb-24 sm:pb-0 sm:mt-24">
       <NuxtPage />
       <AppFooter />
     </div>

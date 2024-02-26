@@ -1,4 +1,6 @@
-import type { Account } from '~/types';
+import type {
+  Account, MediaType, Media, PageResult,
+} from '~/types';
 
 export function fetchTmdb<T>(url: string, options: Record<string, string | number | boolean | undefined> = {}) {
   const runtimeConfig = useRuntimeConfig();
@@ -23,7 +25,7 @@ export function fetchTmdb<T>(url: string, options: Record<string, string | numbe
     ...options,
   };
 
-  return $fetch<T>(url, opts);
+  return useFetch<T>(url, opts);
 }
 
 // export function getConfiguration() {
@@ -32,4 +34,8 @@ export function fetchTmdb<T>(url: string, options: Record<string, string | numbe
 
 export function getAccount(id: string) {
   return fetchTmdb<Account>(`3/account/${id}`);
+}
+
+export function getTrending(media: MediaType, page = 1) {
+  return fetchTmdb<PageResult<Media>>(`3/trending/${media}/week`, { page });
 }

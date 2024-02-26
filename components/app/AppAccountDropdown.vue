@@ -2,7 +2,7 @@
 import { TMDB_IMAGE_BASE_ORIGINAL } from '~/constants/image';
 
 const authStore = useAuthStore();
-const account = authStore.accountId ? await getAccount(authStore.accountId) : null;
+const { data: account } = await getAccount(authStore.accountId);
 
 // TODO extract to settings modal ===>
 const colorMode = useColorMode();
@@ -40,7 +40,7 @@ function switchColorMode() {
 const items = [
   [
     {
-      label: account?.username || 'Guest',
+      label: account?.value?.username || 'Guest',
       disabled: true,
     },
   ],
@@ -62,14 +62,19 @@ const items = [
           {
             label: 'Sign out',
             icon: 'i-ph-sign-out-duotone',
-            click: authStore.deleteAccessToken,
+            click: async () => {
+              await authStore.deleteAccessToken();
+              navigateTo('login');
+            },
           },
         ]
       : [
           {
             label: 'Sign in',
             icon: 'i-ph-sign-in-duotone',
-            click: () => navigateTo('login'),
+            click: () => {
+              navigateTo('login');
+            },
           },
         ]
     ),

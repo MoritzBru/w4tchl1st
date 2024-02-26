@@ -6,6 +6,7 @@ export default defineNuxtConfig({
   //   typeCheck: true,
   // },
   modules: [
+    '@nuxt/image',
     '@nuxt/ui',
     '@vueuse/nuxt',
     '@pinia/nuxt',

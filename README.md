@@ -1,6 +1,6 @@
 # Watchlist
 
-> Built with [Nuxt 3](https://github.com/nuxt/nuxt), [Vue 3](https://github.com/vuejs/core), [Nuxt UI](https://github.com/nuxt/ui), [The Movie Database](https://www.themoviedb.org) and [TypeScript](https://github.com/microsoft/TypeScript).
+> Built with [Nuxt 3](https://github.com/nuxt/nuxt), [Vue 3](https://github.com/vuejs/core), [Nuxt UI](https://github.com/nuxt/ui), [Nuxt Image](https://github.com/nuxt/image), [The Movie Database API](https://www.themoviedb.org/documentation/api) and [TypeScript](https://github.com/microsoft/TypeScript).
 
 ## TODO
 
