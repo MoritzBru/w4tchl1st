@@ -1,5 +1,5 @@
 <script setup lang="ts">
-definePageMeta({ layout: 'plain' });
+// definePageMeta({ layout: 'plain' });
 
 useHead({ title: 'Login' });
 
@@ -17,9 +17,9 @@ if (authStore.requestToken && ('validated' in route.query)) {
 
 watch(() => authStore.isAuthenticated, (isAuthenticated) => {
   if (isAuthenticated) {
-    navigateTo('/');
+    navigateTo('/', { replace: true });
   }
-}, { immediate: true },
+},
 );
 
 </script>

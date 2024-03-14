@@ -2,7 +2,9 @@
 import type {
   Media, MediaType,
 } from '~/types';
-import { TMDB_IMAGE_BASE_ORIGINAL } from '~/constants/image';
+import {
+  TMDB_IMAGE_BASE_THUMB, TMDB_THUMB_HEIGHT, TMDB_THUMB_WIDTH,
+} from '~/constants/image';
 
 defineProps<{
   type: MediaType;
@@ -13,10 +15,11 @@ defineProps<{
 <template>
   <div class="w-64 flex flex-col items-center">
     <NuxtImg
-      :src="`${TMDB_IMAGE_BASE_ORIGINAL}${item.poster_path}`"
+      :src="`${TMDB_IMAGE_BASE_THUMB}${item.poster_path}`"
       :alt="item.title || item.name"
-      height="256"
-      class="h-64 rounded-lg shadow"
+      :height="TMDB_THUMB_HEIGHT"
+      :width="TMDB_THUMB_WIDTH"
+      class="rounded-lg shadow bg-gray-200/50 dark:bg-gray-800/50"
     />
     <div class="w-full bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white px-4 pt-16 pb-4 -mt-12 rounded-lg -z-10">
       <div class="text-base truncate">

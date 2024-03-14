@@ -6,6 +6,8 @@ export default <Partial<Config>>{
     extend: {
       colors: {
         // primary & gray are set by nuxt/ui
+        primary: colors.indigo,
+        gray: colors.zinc,
         secondary: colors.fuchsia,
       },
     },

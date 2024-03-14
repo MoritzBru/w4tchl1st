@@ -32,6 +32,7 @@ const links = [
     :links="links"
     :ui="{
       container: 'w-full justify-between sm:justify-normal lg:gap-2',
+      base: 'gap-0',
       label: 'sr-only sm:not-sr-only sm:relative',
       after: 'after:content-none',
     }"
@@ -39,7 +40,7 @@ const links = [
     <template #icon="{ link, isActive }">
       <span
         :class="[
-          'flex-shrink-0 size-10 sm:size-8',
+          'flex-shrink-0 size-10 sm:size-8 transition-colors',
           isActive ? link.iconActive : link.icon,
           isActive ? 'bg-gradient-to-r from-primary-500 to-fuchsia-500 inline-block bg-clip-content' : 'text-gray-400 dark:text-gray-500 group-hover:text-gray-700 dark:group-hover:text-gray-200'
         ]"

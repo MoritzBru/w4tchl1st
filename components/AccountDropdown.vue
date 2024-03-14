@@ -2,7 +2,8 @@
 import { TMDB_IMAGE_BASE_ORIGINAL } from '~/constants/image';
 
 const authStore = useAuthStore();
-const { data: account } = await getAccount(authStore.accountId);
+const { getAccount } = useTmdb();
+const account = await getAccount(authStore.accountId);
 
 // TODO extract to settings modal ===>
 const colorMode = useColorMode();
@@ -40,7 +41,7 @@ function switchColorMode() {
 const items = [
   [
     {
-      label: account?.value?.username || 'Guest',
+      label: account?.username || 'Guest',
       disabled: true,
     },
   ],
@@ -57,26 +58,23 @@ const items = [
     },
   ],
   [
-    ...(authStore.isAuthenticated
-      ? [
-          {
-            label: 'Sign out',
-            icon: 'i-ph-sign-out-duotone',
-            click: async () => {
-              await authStore.deleteAccessToken();
-              navigateTo('login');
-            },
-          },
-        ]
-      : [
-          {
-            label: 'Sign in',
-            icon: 'i-ph-sign-in-duotone',
-            click: () => {
-              navigateTo('login');
-            },
-          },
-        ]
+    ...conditionallyAddToArray(
+      authStore.isAuthenticated,
+      {
+        label: 'Sign out',
+        icon: 'i-ph-sign-out-duotone',
+        click: async () => {
+          await authStore.deleteAccessToken();
+          navigateTo('/login');
+        },
+      },
+      {
+        label: 'Sign in',
+        icon: 'i-ph-sign-in-duotone',
+        click: () => {
+          navigateTo('/login');
+        },
+      },
     ),
   ],
 ];

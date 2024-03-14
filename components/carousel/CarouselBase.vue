@@ -14,15 +14,17 @@ defineProps<{
     v-slot="{ item }: { item: Media }"
     :items="items"
     :ui="{
-      container: 'border-fade overscroll-contain gap-6 px-6 sm:px-12',
+      container: 'border-fade overscroll-x-contain gap-6 px-6 sm:px-12',
     }"
     :prev-button="{
       color: 'gray',
       icon: 'i-ph-caret-left-duotone',
+      class: 'disabled:opacity-30',
     }"
     :next-button="{
       color: 'gray',
       icon: 'i-ph-caret-right-duotone',
+      class: 'disabled:opacity-30',
     }"
     class="mx-auto overflow-hidden"
     arrows

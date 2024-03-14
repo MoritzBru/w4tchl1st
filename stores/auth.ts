@@ -48,7 +48,7 @@ export const useAuthStore = defineStore('auth', () => {
       requestToken.value = '';
       accessToken.value = response.access_token;
       accountId.value = response.account_id;
-      navigateTo('login');
+      navigateTo('/login');
     }
   }
 

@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import type { MediaType } from '~/types';
-
+import type {
+  Media, MediaType,
+} from '~/types';
 definePageMeta({
   key: (route) => route.fullPath,
   validate: ({ params }) => {
@@ -13,12 +14,58 @@ definePageMeta({
 });
 
 const route = useRoute();
-const type = computed(() => route.params.type || 'movie');
+const type = computed(() => route.params.type as MediaType || 'movie');
 
 useHead({ title: type.value === 'movie' ? 'Movies' : 'TV Shows' });
+
+const authStore = useAuthStore();
+const { getWatchlist } = useTmdb();
+
+const watchlist = ref<Media[]>([]);
+let page = 0;
+let total_pages = Infinity;
+const isLoading = ref(false);
+
+async function loadNext() {
+  if (page >= total_pages || isLoading.value) return;
+  try {
+    isLoading.value = true;
+    page += 1;
+    const newPage = await getWatchlist(authStore.accountId, type.value, { page });
+    total_pages = newPage?.total_pages || 0;
+    watchlist.value.push(...(newPage?.results ?? []));
+  }
+  finally {
+    isLoading.value = false;
+  }
+}
+
+// initial load
+loadNext();
+
+const { arrivedState } = useScroll(document);
+
+watch(() => arrivedState.bottom, () => {
+  if (arrivedState.bottom) {
+    loadNext();
+  }
+});
 
 </script>
 
 <template>
-  <h1>{{ type }}</h1>
+  <UContainer>
+    <SectionHeading>
+      Watchlist {{ type }}
+    </SectionHeading>
+    <ListBase
+      :type="type"
+      :items="watchlist"
+    />
+    <UIcon
+      v-if="isLoading"
+      name="i-ph-circle-notch-duotone"
+      class="block mt-8 size-12 mx-auto animate-spin"
+    />
+  </UContainer>
 </template>

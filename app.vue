@@ -13,7 +13,7 @@ useHead({
 </script>
 
 <template>
-  <NuxtLoadingIndicator />
+  <NuxtLoadingIndicator color="repeating-linear-gradient(to right, #6366f1 ,#c026d3)" />
   <NuxtLayout>
     <NuxtPage />
   </NuxtLayout>
