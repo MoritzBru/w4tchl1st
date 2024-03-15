@@ -12,11 +12,21 @@ export function useTmdb() {
     console.warn('Using app token for tmdb request');
   }
 
+  const toast = useToast();
+
   const $tmdb = $fetch.create({
     baseURL: runtimeConfig.public.tmdbBaseUrl,
     headers: {
       Authorization: `Bearer ${token}`,
       Accept: 'application/json',
+    },
+    async onResponseError({ response }) {
+      toast.add({
+        title: 'Error',
+        description: response?._data?.status_message,
+        icon: 'i-ph-warning-duotone',
+        color: 'red',
+      });
     },
   });
 
@@ -34,7 +44,10 @@ export function useTmdb() {
   }
 
   function getWatchlist(type: MediaType, query: { page?: number; language?: string }) {
-    const payload = { query };
+    const payload = { query: {
+      sort_by: 'created_at.desc',
+      ...query,
+    } };
     return $tmdb<PageResult<Media> | null>(`4/account/${authStore.accountId}/${type}/watchlist`, payload);
   }
 

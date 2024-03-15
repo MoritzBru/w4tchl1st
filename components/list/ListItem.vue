@@ -35,24 +35,22 @@ const { removeFromWatchlist } = useTmdb();
 async function remove() {
   try {
     isLoading.value = true;
-    const res = await removeFromWatchlist(props.type, props.item.id);
-    if (res?.success) {
-      isDeleted.value = true;
-      toast.add({
-        title: 'Successfully removed from Watchlist',
-        description: props.item.title || props.item.name,
-        icon: 'i-ph-check-circle-duotone',
-        color: 'green',
-      });
-    }
-    else {
-      toast.add({
-        title: 'Could not remove from Watchlist',
-        description: res?.status_message,
-        icon: 'i-ph-warning-duotone',
-        color: 'red',
-      });
-    }
+    await removeFromWatchlist(props.type, props.item.id);
+    isDeleted.value = true;
+    toast.add({
+      title: 'Successfully removed from Watchlist',
+      description: props.item.title || props.item.name,
+      icon: 'i-ph-check-circle-duotone',
+      color: 'green',
+    });
+  }
+  catch (err) {
+    toast.add({
+      title: 'Could not remove from Watchlist',
+      description: props.item.title || props.item.name,
+      icon: 'i-ph-warning-duotone',
+      color: 'red',
+    });
   }
   finally {
     isLoading.value = false;

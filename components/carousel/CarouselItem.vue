@@ -19,23 +19,21 @@ const { addToWatchlist } = useTmdb();
 async function add() {
   try {
     isLoading.value = true;
-    const res = await addToWatchlist(props.type, props.item.id);
-    if (res?.success) {
-      toast.add({
-        title: 'Successfully added to Watchlist',
-        description: props.item.title || props.item.name,
-        icon: 'i-ph-check-circle-duotone',
-        color: 'green',
-      });
-    }
-    else {
-      toast.add({
-        title: 'Could not add to Watchlist',
-        description: res?.status_message,
-        icon: 'i-ph-warning-duotone',
-        color: 'red',
-      });
-    }
+    await addToWatchlist(props.type, props.item.id);
+    toast.add({
+      title: 'Successfully added to Watchlist',
+      description: props.item.title || props.item.name,
+      icon: 'i-ph-check-circle-duotone',
+      color: 'green',
+    });
+  }
+  catch (err) {
+    toast.add({
+      title: 'Could not add to Watchlist',
+      description: props.item.title || props.item.name,
+      icon: 'i-ph-warning-duotone',
+      color: 'red',
+    });
   }
   finally {
     isLoading.value = false;
@@ -80,7 +78,7 @@ async function add() {
           {{ formatDate(new Date(props.item.release_date || props.item.first_air_date || '')) }}
         </UBadge>
       </div>
-      <div class="flex flex-col sm:flex-row gap-2 justify-between items-start mt-3">
+      <div class="flex gap-2 justify-between items-start mt-3">
         <UButton
           icon="i-ph-list-plus-duotone"
           size="xs"
