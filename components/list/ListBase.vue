@@ -3,7 +3,7 @@ import type {
   Media, MediaType,
 } from '~/types';
 
-defineProps<{
+const props = defineProps<{
   type: MediaType;
   items: Media[];
 }>();
@@ -12,10 +12,10 @@ defineProps<{
 <template>
   <div class="flex flex-col gap-6">
     <ListItem
-      v-for="(item, index) in items"
+      v-for="(item, index) in props.items"
       :key="index"
       :item="item"
-      :type="type"
+      :type="props.type"
     />
   </div>
 </template>

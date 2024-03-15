@@ -3,7 +3,7 @@ import type {
   Media, MediaType,
 } from '~/types';
 
-defineProps<{
+const props = defineProps<{
   type: MediaType;
   items: Media[];
 }>();
@@ -12,7 +12,7 @@ defineProps<{
 <template>
   <UCarousel
     v-slot="{ item }: { item: Media }"
-    :items="items"
+    :items="props.items"
     :ui="{
       container: 'border-fade overscroll-x-contain gap-6 px-6 sm:px-12',
     }"
@@ -31,7 +31,7 @@ defineProps<{
   >
     <CarouselItem
       :item="item"
-      :type="type"
+      :type="props.type"
       draggable="false"
     />
   </UCarousel>
@@ -39,6 +39,6 @@ defineProps<{
 
 <style>
 .border-fade {
-  mask-image: linear-gradient(to right, transparent, white 10% 90%, transparent);
+  mask-image: linear-gradient(to right, transparent, white 2rem calc(100% - 2rem), transparent);
 }
 </style>

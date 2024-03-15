@@ -1,6 +1,7 @@
 import type {
-  Account, MediaType, Media, PageResult,
+  Account, MediaType, Media, PageResult, StatusResponse,
 } from '~/types';
+import type { NitroFetchOptions } from 'nitropack';
 
 export function useTmdb() {
   const runtimeConfig = useRuntimeConfig();
@@ -27,23 +28,46 @@ export function useTmdb() {
     return $tmdb<Account | null>(`3/account/${id}`);
   }
 
-  function getWatchlist(accountId: string, type: MediaType, query: { page?: number; language?: string }) {
-    return $tmdb<PageResult<Media> | null>(`4/account/${accountId}/${type}/watchlist`, { query });
+  function getTrending(media: MediaType, timeWindow = 'week', query?: { page?: number; language?: string }) {
+    const payload = { query };
+    return $tmdb<PageResult<Media> | null>(`3/trending/${media}/${timeWindow}`, payload);
   }
 
-  function getTrending(media: MediaType, timeWindow = 'week', query?: { page?: number; language?: string }) {
-    return $tmdb<PageResult<Media> | null>(`3/trending/${media}/${timeWindow}`, { query });
+  function getWatchlist(type: MediaType, query: { page?: number; language?: string }) {
+    const payload = { query };
+    return $tmdb<PageResult<Media> | null>(`4/account/${authStore.accountId}/${type}/watchlist`, payload);
+  }
+
+  function addToWatchlist(type: MediaType, id: string) {
+    const payload: NitroFetchOptions<'POST'> = {
+      method: 'POST',
+      body: {
+        media_type: type,
+        media_id: id,
+        watchlist: true,
+      },
+    };
+    return $tmdb<StatusResponse | null>(`3/account/${authStore.accountId}/watchlist`, payload);
+  }
+  function removeFromWatchlist(type: MediaType, id: string) {
+    const payload: NitroFetchOptions<'POST'> = {
+      method: 'POST',
+      body: {
+        media_type: type,
+        media_id: id,
+        watchlist: false,
+      },
+    };
+    return $tmdb<StatusResponse | null>(`3/account/${authStore.accountId}/watchlist`, payload);
   }
 
   return {
     $tmdb,
     getConfiguration,
     getAccount,
-    getWatchlist,
     getTrending,
+    getWatchlist,
+    addToWatchlist,
+    removeFromWatchlist,
   };
 }
-
-// export function getLists(accountId: string) {
-//   return fetchTmdb<PageResult<any>>(`4/account/${accountId}/lists`);
-// }

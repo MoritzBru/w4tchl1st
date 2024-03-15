@@ -18,7 +18,6 @@ const type = computed(() => route.params.type as MediaType || 'movie');
 
 useHead({ title: type.value === 'movie' ? 'Movies' : 'TV Shows' });
 
-const authStore = useAuthStore();
 const { getWatchlist } = useTmdb();
 
 const watchlist = ref<Media[]>([]);
@@ -31,7 +30,7 @@ async function loadNext() {
   try {
     isLoading.value = true;
     page += 1;
-    const newPage = await getWatchlist(authStore.accountId, type.value, { page });
+    const newPage = await getWatchlist(type.value, { page });
     total_pages = newPage?.total_pages || 0;
     watchlist.value.push(...(newPage?.results ?? []));
   }
