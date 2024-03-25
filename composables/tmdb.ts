@@ -1,5 +1,5 @@
 import type {
-  Account, MediaType, Media, PageResult, StatusResponse,
+  Account, MediaType, PageResult, StatusResponse, PageParams, Media, MediaDetails,
 } from '~/types';
 import type { NitroFetchOptions } from 'nitropack';
 
@@ -38,16 +38,18 @@ export function useTmdb() {
     return $tmdb<Account | null>(`3/account/${id}`);
   }
 
-  function getTrending(media: MediaType, timeWindow = 'week', query?: { page?: number; language?: string }) {
-    const payload = { query };
-    return $tmdb<PageResult<Media> | null>(`3/trending/${media}/${timeWindow}`, payload);
+  function getTrending(type: MediaType, timeWindow = 'week', query?: PageParams) {
+    const payload: NitroFetchOptions<'GET'> = { query };
+    return $tmdb<PageResult<Media> | null>(`3/trending/${type}/${timeWindow}`, payload);
   }
 
-  function getWatchlist(type: MediaType, query: { page?: number; language?: string }) {
-    const payload = { query: {
-      sort_by: 'created_at.desc',
-      ...query,
-    } };
+  function getWatchlist(type: MediaType, query: PageParams) {
+    const payload: NitroFetchOptions<'GET'> = {
+      query: {
+        sort_by: 'created_at.desc',
+        ...query,
+      },
+    };
     return $tmdb<PageResult<Media> | null>(`4/account/${authStore.accountId}/${type}/watchlist`, payload);
   }
 
@@ -62,6 +64,7 @@ export function useTmdb() {
     };
     return $tmdb<StatusResponse | null>(`3/account/${authStore.accountId}/watchlist`, payload);
   }
+
   function removeFromWatchlist(type: MediaType, id: string) {
     const payload: NitroFetchOptions<'POST'> = {
       method: 'POST',
@@ -74,6 +77,11 @@ export function useTmdb() {
     return $tmdb<StatusResponse | null>(`3/account/${authStore.accountId}/watchlist`, payload);
   }
 
+  function getDetails(type: MediaType, id: string) {
+    const payload: NitroFetchOptions<'GET'> = { query: { append_to_response: 'account_states,videos,recommendations,external_ids,credits' } };
+    return $tmdb<MediaDetails | null>(`3/${type}/${id}`, payload);
+  }
+
   return {
     $tmdb,
     getConfiguration,
@@ -82,5 +90,6 @@ export function useTmdb() {
     getWatchlist,
     addToWatchlist,
     removeFromWatchlist,
+    getDetails,
   };
 }
