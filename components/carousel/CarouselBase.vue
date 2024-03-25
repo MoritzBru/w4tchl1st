@@ -1,20 +1,19 @@
-<script setup lang="ts">
-import type {
-  Media, MediaType,
-} from '~/types';
-
+<script setup lang="ts" generic="T">
 const props = defineProps<{
-  type: MediaType;
-  items: Media[];
+  items: T[];
+}>();
+
+defineSlots<{
+  default(props: { item: T }): any;
 }>();
 </script>
 
 <template>
   <UCarousel
-    v-slot="{ item }: { item: Media }"
+    v-slot="{ item }"
     :items="props.items"
     :ui="{
-      container: 'border-fade overscroll-x-contain gap-6 px-6 sm:px-12',
+      container: 'overscroll-x-contain gap-6 px-6 sm:px-12 mask-linear mask-dir-to-r mask-from-0 mask-via-100 mask-to-0  mask-point-via-[2rem_calc(100%-2rem)]',
     }"
     :prev-button="{
       color: 'gray',
@@ -29,16 +28,8 @@ const props = defineProps<{
     class="mx-auto overflow-hidden"
     arrows
   >
-    <CarouselItem
-      :item="item"
-      :type="props.type"
-      draggable="false"
-    />
+    <slot v-bind="{ item }">
+      <CarouselItem :item="item" />
+    </slot>
   </UCarousel>
 </template>
-
-<style>
-.border-fade {
-  mask-image: linear-gradient(to right, transparent, white 2rem calc(100% - 2rem), transparent);
-}
-</style>

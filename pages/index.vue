@@ -9,16 +9,10 @@ const trendingTV = await getTrending('tv');
     <SectionHeading class="px-10">
       Trending Movies
     </SectionHeading>
-    <CarouselBase
-      type="movie"
-      :items="trendingMovies?.results || []"
-    />
+    <CarouselBase :items="trendingMovies?.results || []" />
     <SectionHeading class="px-10 mt-6">
       Trending TV Shows
     </SectionHeading>
-    <CarouselBase
-      type="tv"
-      :items="trendingTV?.results || []"
-    />
+    <CarouselBase :items="trendingTV?.results || []" />
   </main>
 </template>

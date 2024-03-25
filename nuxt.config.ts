@@ -43,7 +43,12 @@ export default defineNuxtConfig({
       ],
     },
   },
-  ui: { icons: ['ph'] },
+  ui: {
+    icons: [
+      'ph',
+      'bx',
+    ],
+  },
   runtimeConfig: {
     public: {
       baseUrl: 'http://localhost:3000',

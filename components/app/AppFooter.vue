@@ -10,7 +10,7 @@
         <UButton
           icon="i-ph-github-logo-duotone"
           color="gray"
-          variant="ghost"
+          variant="link"
           to="https://github.com/MoritzBru/watchlist"
           target="_blank"
           rel="noopener"
@@ -20,14 +20,16 @@
       </p>
       <p class="flex items-center gap-4">
         Data provided by
-        <a
-          href="https://www.themoviedb.org/"
+        <UButton
+          color="gray"
+          variant="link"
+          to="https://www.themoviedb.org/"
           title="The Movie Database"
           target="_blank"
           rel="noopener"
         >
           <IconTmdbShort class="h-4 w-auto" />
-        </a>
+        </UButton>
       </p>
     </div>
   </footer>
