@@ -41,7 +41,10 @@ useHead({
 
 <template>
   <div>
-    <DetailsHero :item="item" />
+    <DetailsHero
+      :item="item"
+      :type="type"
+    />
     <DetailsInfo
       :item="item"
       class="mt-8"

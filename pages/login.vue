@@ -41,6 +41,7 @@ watch(() => authStore.isAuthenticated, (isAuthenticated) => {
         size="xl"
         color="white"
         :to="authStore.validationUrl"
+        external
       >
         <IconTmdbShort class="h-2 w-auto" />
         <span>

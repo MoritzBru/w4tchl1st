@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { YoutubeModal } from '#components';
 import type {
-  MediaDetails, Badge,
+  MediaDetails, Badge, MediaType,
 } from '~/types';
 import {
   TMDB_IMAGE_BASE_BACKDROP, TMDB_BACKDROP_WIDTH, TMDB_BACKDROP_HEIGHT,
@@ -9,9 +9,12 @@ import {
 
 const props = defineProps<{
   item: MediaDetails;
+  type: MediaType;
 }>();
 
 const modal = useModal();
+
+const { getMovieWebUrl } = useMovieWeb();
 
 const trailer = props.item.videos?.results?.find((video) => video.type === 'Trailer' && video.site === 'YouTube');
 
@@ -45,7 +48,7 @@ const badges: Badge[] = [
     </div>
     <div class="absolute left-0 bottom-0 sm:top-0 p-8 sm:p-12 sm:w-2/3 w-full">
       <div class="flex flex-col gap-4 items-start w-full">
-        <h1 class="text-3xl sm:text-4xl line-clamp-2">
+        <h1 class="text-3xl sm:text-4xl line-clamp-2 text-shadow shadow-white dark:shadow-black">
           {{ props.item.title || props.item.name }}
         </h1>
         <BadgeList :badges="badges" />
@@ -55,15 +58,29 @@ const badges: Badge[] = [
         >
           {{ props.item?.tagline }}
         </p>
-        <UButton
-          v-if="trailer"
-          icon="i-ph-play-duotone"
-          variant="soft"
-          size="md"
-          @click="openTrailerModal"
-        >
-          Trailer
-        </UButton>
+        <div class="flex gap-4">
+          <UButton
+            v-if="trailer"
+            icon="i-ph-youtube-logo-duotone"
+            variant="soft"
+            size="md"
+            @click="openTrailerModal"
+          >
+            Trailer
+          </UButton>
+          <UButton
+            v-if="getMovieWebUrl(item.id, type)"
+            icon="i-ph-play-duotone"
+            variant="soft"
+            color="secondary"
+            size="md"
+            :to="getMovieWebUrl(item.id, type)"
+            external
+            target="_blank"
+          >
+            Watch
+          </UButton>
+        </div>
       </div>
     </div>
   </div>

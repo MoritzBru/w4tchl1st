@@ -42,6 +42,7 @@ async function loadNext() {
 // initial load
 loadNext();
 
+// TODO: useInfiteScroll
 const { arrivedState } = useScroll(document);
 
 watch(() => arrivedState.bottom, () => {
@@ -53,7 +54,7 @@ watch(() => arrivedState.bottom, () => {
 </script>
 
 <template>
-  <UContainer>
+  <UContainer class="mt-24">
     <SectionHeading>
       Watchlist {{ type }}
     </SectionHeading>

@@ -1,6 +1,6 @@
 <template>
-  <footer class="p-8">
-    <div class="container mx-auto flex flex-col gap-3">
+  <footer class="px-8 py-16">
+    <div class="container mx-auto flex flex-col items-center gap-3">
       <p class="text-xl flex items-center gap-4">
         <IconWatchlist class="size-6" />
         <span class="font-semibold">Watchlist</span>
@@ -13,7 +13,7 @@
           variant="link"
           to="https://github.com/MoritzBru/watchlist"
           target="_blank"
-          rel="noopener"
+          external
         >
           Moritz Brunnengräber
         </UButton>
@@ -26,7 +26,7 @@
           to="https://www.themoviedb.org/"
           title="The Movie Database"
           target="_blank"
-          rel="noopener"
+          external
         >
           <IconTmdbShort class="h-4 w-auto" />
         </UButton>

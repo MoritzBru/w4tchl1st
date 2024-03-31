@@ -71,6 +71,7 @@ const links = [
       target="_blank"
       variant="ghost"
       color="gray"
+      external
     />
   </div>
 </template>
