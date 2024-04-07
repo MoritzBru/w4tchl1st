@@ -43,6 +43,20 @@ export function useTmdb() {
     return $tmdb<PageResult<Media> | null>(`3/trending/${type}/${timeWindow}`, payload);
   }
 
+  function getUpcoming(type: MediaType, query?: PageParams) {
+    const queryLookup = {
+      movie: 'primary_release_date.gte',
+      tv: 'first_air_date.gte',
+    };
+    const payload: NitroFetchOptions<'GET'> = {
+      query: {
+        ...query,
+        [queryLookup[type]]: new Date().toISOString(),
+      },
+    };
+    return $tmdb<PageResult<Media> | null>(`3/discover/${type}`, payload);
+  }
+
   function getWatchlist(type: MediaType, query: PageParams) {
     const payload: NitroFetchOptions<'GET'> = {
       query: {
@@ -87,6 +101,7 @@ export function useTmdb() {
     getConfiguration,
     getAccount,
     getTrending,
+    getUpcoming,
     getWatchlist,
     addToWatchlist,
     removeFromWatchlist,
