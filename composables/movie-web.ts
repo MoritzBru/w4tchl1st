@@ -1,7 +1,5 @@
 import { useLocalStorage } from '@vueuse/core';
-import type {
-  MediaType,
-} from '~/types';
+import type { MediaType } from '~/types';
 
 export function useMovieWeb() {
   const movieWebBase = useLocalStorage('wl-mwbase', '');

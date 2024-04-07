@@ -40,7 +40,7 @@ useHead({
 </script>
 
 <template>
-  <div>
+  <article>
     <DetailsHero
       :item="item"
       :type="type"
@@ -79,5 +79,5 @@ useHead({
         :items="item?.recommendations?.results || []"
       />
     </template>
-  </div>
+  </article>
 </template>

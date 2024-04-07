@@ -54,18 +54,20 @@ watch(() => arrivedState.bottom, () => {
 </script>
 
 <template>
-  <UContainer class="mt-24">
-    <SectionHeading>
-      Watchlist {{ type }}
-    </SectionHeading>
-    <ListBase
-      :type="type"
-      :items="watchlist"
-    />
-    <UIcon
-      v-if="isLoading"
-      name="i-ph-circle-notch-duotone"
-      class="block mt-8 size-12 mx-auto animate-spin"
-    />
-  </UContainer>
+  <main class="mt-24">
+    <UContainer>
+      <SectionHeading>
+        Watchlist {{ type }}
+      </SectionHeading>
+      <ListBase
+        :type="type"
+        :items="watchlist"
+      />
+      <UIcon
+        v-if="isLoading"
+        name="i-ph-circle-notch-duotone"
+        class="block mt-8 size-12 mx-auto animate-spin"
+      />
+    </UContainer>
+  </main>
 </template>

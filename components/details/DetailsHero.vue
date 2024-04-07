@@ -47,7 +47,7 @@ const badges: Badge[] = [
       />
     </div>
     <div class="absolute left-0 bottom-0 sm:top-0 p-8 sm:p-12 sm:w-2/3 w-full">
-      <div class="flex flex-col gap-4 items-start w-full">
+      <header class="flex flex-col gap-4 items-start w-full">
         <h1 class="text-3xl sm:text-4xl line-clamp-2 text-shadow shadow-white dark:shadow-black">
           {{ props.item.title || props.item.name }}
         </h1>
@@ -81,7 +81,7 @@ const badges: Badge[] = [
             Watch
           </UButton>
         </div>
-      </div>
+      </header>
     </div>
   </div>
 </template>
