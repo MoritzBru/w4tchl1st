@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import type {
-  Media, MediaType,
-} from '~/types';
+import type { Media, MediaType } from '~/types';
 
 const props = defineProps<{
   type: MediaType;

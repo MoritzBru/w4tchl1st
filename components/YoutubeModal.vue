@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import type { Video } from '~/types';
-import {
-  YT_VIDEO_BASE, YT_VIDEO_PARAMS,
-} from '~/constants/video';
+import { YT_VIDEO_BASE, YT_VIDEO_PARAMS } from '~/constants/video';
 
 const props = defineProps<{
   video: Video;

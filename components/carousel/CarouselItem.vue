@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import type {
-  Media, Badge,
-} from '~/types';
+import type { Media, Badge } from '~/types';
 import {
   TMDB_IMAGE_BASE_THUMB, TMDB_THUMB_HEIGHT, TMDB_THUMB_WIDTH,
 } from '~/constants/image';

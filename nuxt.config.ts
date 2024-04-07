@@ -44,10 +44,7 @@ export default defineNuxtConfig({
     },
   },
   ui: {
-    icons: [
-      'ph',
-      'bx',
-    ],
+    icons: ['ph', 'bx'],
   },
   runtimeConfig: {
     public: {

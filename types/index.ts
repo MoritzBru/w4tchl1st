@@ -8,12 +8,8 @@ export * from './image';
 export * from './video';
 export * from './credits';
 
-import type {
-  Movie, MovieDetails,
-} from './movie';
-import type {
-  TV, TVDetails,
-} from './tv';
+import type { Movie, MovieDetails } from './movie';
+import type { TV, TVDetails } from './tv';
 import type { Images } from './image';
 import type { Videos } from './video';
 import type { Credits } from './credits';

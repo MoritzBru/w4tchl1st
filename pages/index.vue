@@ -1,7 +1,5 @@
 <script setup lang="ts">
-const {
-  getTrending, getUpcoming,
-} = useTmdb();
+const { getTrending, getUpcoming } = useTmdb();
 const trendingMovies = await getTrending('movie');
 const trendingTV = await getTrending('tv');
 const upcomingMovies = await getUpcoming('movie');
