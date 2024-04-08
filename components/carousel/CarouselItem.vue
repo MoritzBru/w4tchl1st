@@ -8,38 +8,9 @@ const props = defineProps<{
   item: Media;
 }>();
 
-const type = props.item.media_type || 'movie';
-const itemTitle = props.item.title || props.item.name;
+const type = getItemType(props.item);
+const itemTitle = getItemTitle(props.item);
 const itemReleaseDate = new Date(props.item.release_date || props.item.first_air_date || NaN);
-
-const toast = useToast();
-
-const isLoading = ref(false);
-
-const { addToWatchlist } = useTmdb();
-async function add() {
-  try {
-    isLoading.value = true;
-    await addToWatchlist(type, props.item.id);
-    toast.add({
-      title: 'Successfully added to Watchlist',
-      description: itemTitle,
-      icon: 'i-ph-check-circle-duotone',
-      color: 'green',
-    });
-  }
-  catch (err) {
-    toast.add({
-      title: 'Could not add to Watchlist',
-      description: itemTitle,
-      icon: 'i-ph-warning-duotone',
-      color: 'red',
-    });
-  }
-  finally {
-    isLoading.value = false;
-  }
-}
 
 const badges: Badge[] = [
   {
@@ -47,7 +18,7 @@ const badges: Badge[] = [
     icon: 'i-ph-star-duotone',
   },
   {
-    label: formatDate(itemReleaseDate),
+    label: isNaN(Number(itemReleaseDate)) ? 'unknown' : formatDate(itemReleaseDate),
     icon: 'i-ph-calendar-blank-duotone',
   },
 ];
@@ -75,20 +46,15 @@ const badges: Badge[] = [
         class="mt-3 justify-between"
       />
       <div class="flex gap-2 justify-between items-start mt-3">
-        <UButton
-          icon="i-ph-list-plus-duotone"
+        <WatchlistButton
+          :item="props.item"
           size="xs"
-          color="primary"
-          variant="outline"
-          label="Add"
-          :loading="isLoading"
-          @click="add"
         />
         <UButton
           icon="i-ph-eye-duotone"
           size="xs"
           color="primary"
-          variant="outline"
+          variant="soft"
           label="Details"
           :to="`/${type}/${props.item.id}`"
         />

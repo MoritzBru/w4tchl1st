@@ -1,3 +1,5 @@
+import type { Media, MediaType } from '~/types';
+
 // TODO define locale
 export const { format: formatVote } = Intl.NumberFormat(undefined, {
   notation: 'compact',
@@ -30,3 +32,10 @@ export const formatTime = (minutes: number) => {
 };
 
 export const conditionallyAddToArray = <Type>(condition: Boolean, item: Type, fallback?: Type) => (condition ? [item] : fallback ? [fallback] : []);
+
+export const getItemTitle = (item: Media) => item.title || item.name || '';
+
+export const getItemType = (item: Media): MediaType => {
+  if (item.media_type && ['movie', 'tv'].includes(item.media_type)) return item.media_type;
+  return item.title ? 'movie' : 'tv';
+};

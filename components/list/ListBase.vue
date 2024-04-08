@@ -2,7 +2,7 @@
 import type { Media, MediaType } from '~/types';
 
 const props = defineProps<{
-  type: MediaType;
+  type?: MediaType;
   items: Media[];
 }>();
 </script>

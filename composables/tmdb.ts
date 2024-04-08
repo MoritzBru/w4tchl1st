@@ -1,5 +1,5 @@
 import type {
-  Account, MediaType, PageResult, StatusResponse, PageParams, Media, MediaDetails,
+  Account, MediaType, PageResult, StatusResponse, PageParams, Media, MediaDetails, AccountStates,
 } from '~/types';
 import type { NitroFetchOptions } from 'nitropack';
 
@@ -96,6 +96,20 @@ export function useTmdb() {
     return $tmdb<MediaDetails | null>(`3/${type}/${id}`, payload);
   }
 
+  function getAccountStates(type: MediaType, id: string) {
+    return $tmdb<AccountStates | null>(`3/${type}/${id}/account_states`);
+  }
+
+  function search(term: string, query?: PageParams) {
+    const payload: NitroFetchOptions<'GET'> = {
+      query: {
+        query: term,
+        ...query,
+      },
+    };
+    return $tmdb<PageResult<Media> | null>(`3/search/multi`, payload);
+  }
+
   return {
     $tmdb,
     getConfiguration,
@@ -106,5 +120,7 @@ export function useTmdb() {
     addToWatchlist,
     removeFromWatchlist,
     getDetails,
+    getAccountStates,
+    search,
   };
 }

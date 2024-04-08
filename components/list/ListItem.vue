@@ -7,12 +7,13 @@ import {
 } from '~/constants/image';
 
 const props = defineProps<{
-  type: MediaType;
+  type?: MediaType;
   item: Media;
 }>();
 
-const itemTitle = props.item.title || props.item.name;
+const itemTitle = getItemTitle(props.item);
 const itemReleaseDate = new Date(props.item.release_date || props.item.first_air_date || NaN);
+const type = props.type || getItemType(props.item);
 
 const badges: ComputedRef<Badge[]> = computed(() => [
   {
@@ -20,48 +21,15 @@ const badges: ComputedRef<Badge[]> = computed(() => [
     icon: 'i-ph-star-duotone',
   },
   {
-    label: formatDate(itemReleaseDate),
+    label: isNaN(Number(itemReleaseDate)) ? 'unknown' : formatDate(itemReleaseDate),
     icon: 'i-ph-calendar-blank-duotone',
   },
 ]);
-
-const toast = useToast();
-
-const isLoading = ref(false);
-
-const isDeleted = ref(false);
-
-const { removeFromWatchlist } = useTmdb();
-async function remove() {
-  try {
-    isLoading.value = true;
-    await removeFromWatchlist(props.type, props.item.id);
-    isDeleted.value = true;
-    toast.add({
-      title: 'Successfully removed from Watchlist',
-      description: itemTitle,
-      icon: 'i-ph-check-circle-duotone',
-      color: 'green',
-    });
-  }
-  catch (err) {
-    toast.add({
-      title: 'Could not remove from Watchlist',
-      description: itemTitle,
-      icon: 'i-ph-warning-duotone',
-      color: 'red',
-    });
-  }
-  finally {
-    isLoading.value = false;
-  }
-}
 </script>
 
 <template>
   <div
     class="flex items-center flex-col sm:items-end sm:odd:flex-row sm:even:flex-row-reverse group"
-    :class="{'opacity-50 saturate-50': isDeleted}"
   >
     <NuxtImg
       :src="`${TMDB_IMAGE_BASE_THUMB}${item.poster_path}`"
@@ -82,23 +50,17 @@ async function remove() {
         class="mt-3 justify-between"
       />
       <div class="flex gap-2 justify-between items-start mt-3">
-        <UButton
-          icon="i-ph-trash-duotone"
+        <WatchlistButton
+          :item="item"
           size="xs"
-          color="primary"
-          variant="outline"
-          label="Remove"
-          :loading="isLoading"
-          :disabled="isDeleted"
-          @click="remove"
         />
         <UButton
           icon="i-ph-eye-duotone"
           size="xs"
           color="primary"
-          variant="outline"
+          variant="soft"
           label="Details"
-          :to="`/${props.type}/${props.item.id}`"
+          :to="`/${type}/${props.item.id}`"
         />
       </div>
     </div>

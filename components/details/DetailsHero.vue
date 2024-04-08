@@ -46,7 +46,7 @@ const badges: Badge[] = [
         class="bg-gray-200/50 dark:bg-gray-800/50 h-full w-full object-cover mask-linear mask-dir-to-t sm:mask-dir-to-r mask-from-0 mask-to-100"
       />
     </div>
-    <div class="absolute left-0 bottom-0 sm:top-0 p-8 sm:p-12 sm:w-2/3 w-full">
+    <div class="absolute left-0 top-0 p-8 sm:p-12 sm:w-2/3 w-full">
       <header class="flex flex-col gap-4 items-start w-full">
         <h1 class="text-3xl sm:text-4xl line-clamp-2 text-shadow shadow-white dark:shadow-black">
           {{ props.item.title || props.item.name }}
@@ -58,28 +58,30 @@ const badges: Badge[] = [
         >
           {{ props.item?.tagline }}
         </p>
-        <div class="flex gap-4">
+        <div class="flex flex-wrap gap-3">
+          <WatchlistButton
+            :item="props.item"
+            size="md"
+          />
           <UButton
             v-if="trailer"
             icon="i-ph-youtube-logo-duotone"
+            label="Trailer"
             variant="soft"
             size="md"
             @click="openTrailerModal"
-          >
-            Trailer
-          </UButton>
+          />
           <UButton
             v-if="getMovieWebUrl(item.id, type)"
             icon="i-ph-play-duotone"
+            label="Watch"
             variant="soft"
             color="secondary"
             size="md"
             :to="getMovieWebUrl(item.id, type)"
             external
             target="_blank"
-          >
-            Watch
-          </UButton>
+          />
         </div>
       </header>
     </div>

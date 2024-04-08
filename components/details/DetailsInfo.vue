@@ -67,7 +67,7 @@ const details = [
   <UContainer class="flex flex-col sm:flex-row items-center sm:items-start gap-4">
     <NuxtImg
       :src="`${TMDB_IMAGE_BASE_ORIGINAL}${props.item.poster_path}`"
-      :alt="props.item.title || props.item.name"
+      :alt="getItemTitle($props.item)"
       :height="TMDB_THUMB_HEIGHT"
       :width="TMDB_THUMB_WIDTH"
       class="rounded-lg shadow bg-gray-200/50 dark:bg-gray-800/50 w-64"
