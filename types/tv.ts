@@ -1,6 +1,5 @@
 import type {
-  Genre,
-  MediaBase, Company, Country, Language,
+  Genre, MediaBase, Company, Country, Language,
 } from '.';
 
 export interface CreatedBy {

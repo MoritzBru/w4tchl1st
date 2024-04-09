@@ -6,13 +6,13 @@ export * from './movie';
 export * from './tv';
 export * from './image';
 export * from './video';
-export * from './credits';
+export * from './person';
 
 import type { Movie, MovieDetails } from './movie';
 import type { TV, TVDetails } from './tv';
 import type { Images } from './image';
 import type { Videos } from './video';
-import type { Credits } from './credits';
+import type { Person, Credits } from './person';
 
 export interface StatusResponse {
   status_code: number;
@@ -97,3 +97,5 @@ export interface ExternalIds {
   twitter_id?: string;
   wikidata_id?: string;
 }
+
+export type Search = Media | Person;

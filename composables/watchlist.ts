@@ -8,7 +8,7 @@ export function useWatchlistItem(item: Media & Partial<MediaDetails>) {
   const isLoading = ref(false);
 
   const _type = getItemType(item);
-  const _title = getItemType(item);
+  const _title = getItemTitle(item);
 
   const _accountStates = ref(item?.account_states || null);
 
@@ -17,8 +17,6 @@ export function useWatchlistItem(item: Media & Partial<MediaDetails>) {
     syncRefs(loading, isLoading);
     syncRef(state, _accountStates);
   }
-
-  // const isOnWatchlist = ref(_accountStates.value?.watchlist);
 
   const isOnWatchlist = computed<boolean>({
     get() {

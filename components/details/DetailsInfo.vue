@@ -22,7 +22,7 @@ const details = [
   ),
   {
     label: 'Release Date',
-    value: formatDate(new Date(props.item.release_date || props.item.first_air_date || NaN)),
+    value: (props.item.release_date || props.item.first_air_date) ? formatDate(new Date(props.item.release_date || props.item.first_air_date || NaN)) : 'unknown',
   },
   ...conditionallyAddToArray(
     Boolean(props.item.budget),

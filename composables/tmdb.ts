@@ -1,5 +1,5 @@
 import type {
-  Account, MediaType, PageResult, StatusResponse, PageParams, Media, MediaDetails, AccountStates,
+  Account, MediaType, PageResult, StatusResponse, PageParams, Media, MediaDetails, AccountStates, Search,
 } from '~/types';
 import type { NitroFetchOptions } from 'nitropack';
 
@@ -107,7 +107,7 @@ export function useTmdb() {
         ...query,
       },
     };
-    return $tmdb<PageResult<Media> | null>(`3/search/multi`, payload);
+    return $tmdb<PageResult<Search> | null>(`3/search/multi`, payload);
   }
 
   return {

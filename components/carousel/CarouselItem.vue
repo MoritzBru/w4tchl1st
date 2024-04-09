@@ -8,7 +8,6 @@ const props = defineProps<{
   item: Media;
 }>();
 
-const type = getItemType(props.item);
 const itemTitle = getItemTitle(props.item);
 const itemReleaseDate = new Date(props.item.release_date || props.item.first_air_date || NaN);
 
@@ -38,9 +37,9 @@ const badges: Badge[] = [
       class="rounded-lg shadow bg-gray-200/50 dark:bg-gray-800/50 z-10"
     />
     <div class="w-full bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white px-4 pt-16 pb-4 -mt-12 rounded-lg">
-      <div class="text-base truncate">
+      <h3 class="text-base truncate">
         {{ itemTitle }}
-      </div>
+      </h3>
       <BadgeList
         :badges="badges"
         class="mt-3 justify-between"
@@ -51,12 +50,12 @@ const badges: Badge[] = [
           size="xs"
         />
         <UButton
-          icon="i-ph-eye-duotone"
+          icon="i-ph-info-duotone"
           size="xs"
           color="primary"
           variant="soft"
           label="Details"
-          :to="`/${type}/${props.item.id}`"
+          :to="getItemUrl(props.item)"
         />
       </div>
     </div>

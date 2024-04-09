@@ -1,19 +1,27 @@
 <script setup lang="ts">
-import type { Media, MediaType } from '~/types';
+import type { Search, Media, Person, MediaType } from '~/types';
 
 const props = defineProps<{
   type?: MediaType;
-  items: Media[];
+  items: Search[];
 }>();
 </script>
 
 <template>
   <div class="flex flex-col gap-6">
-    <ListItem
+    <template
       v-for="(item, index) in props.items"
       :key="index"
-      :item="item"
-      :type="props.type"
-    />
+    >
+      <ListItemPerson
+        v-if="item.media_type === 'person'"
+        :item="item as Person"
+      />
+      <ListItem
+        v-else
+        :item="item as Media"
+        :type="props.type"
+      />
+    </template>
   </div>
 </template>

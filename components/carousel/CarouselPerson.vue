@@ -42,9 +42,9 @@ const props = defineProps<{
       }"
     />
     <div class="w-full bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white px-4 pt-16 pb-4 -mt-12 rounded-lg">
-      <p class="text-base font-bold truncate">
+      <h3 class="text-base font-bold truncate">
         {{ props.item.name }}
-      </p>
+      </h3>
       <p class="text-sm truncate">
         {{ props.item.character || props.item.job }}
       </p>

@@ -12,3 +12,8 @@
 - extract settings modal from account menu
 - error handling (https://nuxt.com/docs/examples/advanced/error-handling)
 - error handling on auth/api fail
+- add mw url settings modal
+- person page
+- image fallback for carousel/list/detail
+- watchlist date format green released/ red not released
+- animations on list lazy load entering and on search

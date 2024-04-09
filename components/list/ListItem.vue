@@ -13,9 +13,8 @@ const props = defineProps<{
 
 const itemTitle = getItemTitle(props.item);
 const itemReleaseDate = new Date(props.item.release_date || props.item.first_air_date || NaN);
-const type = props.type || getItemType(props.item);
 
-const badges: ComputedRef<Badge[]> = computed(() => [
+const badges = computed<Badge[]>(() => [
   {
     label: formatVote(props.item.vote_average),
     icon: 'i-ph-star-duotone',
@@ -38,13 +37,17 @@ const badges: ComputedRef<Badge[]> = computed(() => [
       :width="TMDB_THUMB_WIDTH"
       class="rounded-lg shadow sm:mb-6 bg-gray-200/50 dark:bg-gray-700/50 max-w-32 sm:max-w-full z-10"
     />
-    <div class="bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white p-6 max-sm:pt-16 max-sm:-mt-8 rounded-lg sm:group-even:-mr-8 sm:group-even:pr-16 sm:group-odd:pl-16 sm:group-odd:-ml-8">
-      <div class="text-base">
+    <div class="bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white p-6 w-full sm:w-auto max-sm:pt-16 max-sm:-mt-8 rounded-lg sm:group-even:-mr-8 sm:group-even:pr-16 sm:group-odd:pl-16 sm:group-odd:-ml-8">
+      <h3 class="text-base flex items-center gap-2 justify-between">
         {{ itemTitle }}
-      </div>
-      <div class="text-sm font-thin max-w-prose line-clamp-2 sm:line-clamp-3 text-pretty">
+        <UIcon
+          :name="getItemIcon(props.item)"
+          class="text-2xl opacity-50"
+        />
+      </h3>
+      <p class="mt-3 text-sm font-thin max-w-prose line-clamp-2 sm:line-clamp-3 text-pretty">
         {{ props.item.overview }}
-      </div>
+      </p>
       <BadgeList
         :badges="badges"
         class="mt-3 justify-between"
@@ -55,12 +58,12 @@ const badges: ComputedRef<Badge[]> = computed(() => [
           size="xs"
         />
         <UButton
-          icon="i-ph-eye-duotone"
+          icon="i-ph-info-duotone"
           size="xs"
           color="primary"
           variant="soft"
           label="Details"
-          :to="`/${type}/${props.item.id}`"
+          :to="getItemUrl(props.item)"
         />
       </div>
     </div>
