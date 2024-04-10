@@ -1,8 +1,11 @@
 import { useLocalStorage } from '@vueuse/core';
 import type { MediaType } from '~/types';
+import { MovieWebBaseModal } from '#components';
 
 export function useMovieWeb() {
-  const movieWebBase = useLocalStorage('wl-mwbase', '');
+  const movieWebBase = useLocalStorage('wl-movieWebBase', '');
+
+  const modal = useModal();
 
   function getMovieWebUrl(id: string, type: MediaType) {
     if (!movieWebBase.value || !id || !type) return;
@@ -10,8 +13,13 @@ export function useMovieWeb() {
     return url.toString();
   }
 
+  function changeMovieWebBase() {
+    modal.open(MovieWebBaseModal);
+  }
+
   return {
     movieWebBase,
     getMovieWebUrl,
+    changeMovieWebBase,
   };
 }

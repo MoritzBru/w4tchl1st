@@ -5,38 +5,8 @@ const authStore = useAuthStore();
 const { getAccount } = useTmdb();
 const account = await getAccount(authStore.accountId);
 
-// TODO extract to settings modal ===>
-const colorMode = useColorMode();
-const toast = useToast();
-
-const colorModeOptions = [
-  {
-    preference: 'system',
-    icon: 'i-ph-monitor-duotone',
-  },
-  {
-    preference: 'dark',
-    icon: 'i-ph-moon-duotone',
-  },
-  {
-    preference: 'light',
-    icon: 'i-ph-sun-duotone',
-  },
-];
-
-const currentColorModeIdx = computed(() => colorModeOptions.findIndex((option) => option.preference === colorMode.preference));
-const nextColorModeIdx = computed(() => (currentColorModeIdx.value + 1) % colorModeOptions.length);
-
-function switchColorMode() {
-  colorMode.preference = colorModeOptions[nextColorModeIdx.value].preference;
-  toast.add({
-    title: 'Colormode changed',
-    description: colorMode.preference,
-    icon: colorModeOptions[currentColorModeIdx.value].icon,
-  });
-}
-
-// <===
+const { colorMode, switchColorMode } = useColormode();
+const { changeMovieWebBase } = useMovieWeb();
 
 const items = [
   [
@@ -53,8 +23,9 @@ const items = [
       click: switchColorMode,
     },
     {
-      label: 'Change language',
-      icon: 'i-ph-translate-duotone',
+      label: 'Change Movie Web',
+      icon: 'i-ph-film-strip-fill',
+      click: changeMovieWebBase,
     },
   ],
   [
@@ -78,7 +49,6 @@ const items = [
     ),
   ],
 ];
-
 </script>
 
 <template>
@@ -87,7 +57,7 @@ const items = [
     :ui="{
       trigger: 'items-center',
       width: 'w-64',
-      item: { disabled: 'cursor-text select-text' }
+      item: { disabled: 'cursor-text select-text' },
     }"
     :popper="{ placement: 'bottom-end' }"
   >
@@ -110,7 +80,7 @@ const items = [
         variant="soft"
         class="ml-auto"
       >
-        {{ $colorMode.preference }}
+        {{ colorMode.preference }}
       </UBadge>
     </template>
   </UDropdown>
