@@ -1,11 +1,11 @@
 <script setup lang="ts">
 useHead({
   htmlAttrs: { lang: 'en' },
-  titleTemplate: (title) => title ? `${title} · Watchlist` : 'Watchlist',
+  titleTemplate: (title) => title ? `${title} · w4tchl1st` : 'w4tchl1st',
   meta: [
     {
       name: 'description',
-      content: 'A Watchlist based on TMDB',
+      content: 'A w4tchl1st based on TMDB',
     },
   ],
 });

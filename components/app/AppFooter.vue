@@ -2,8 +2,8 @@
   <footer class="px-8 py-16">
     <div class="container mx-auto flex flex-col items-center gap-3">
       <p class="text-xl flex items-center gap-4">
-        <IconWatchlist class="size-6" />
-        <span class="font-semibold">Watchlist</span>
+        <IconW4tchl1st class="size-6" />
+        <span class="font-semibold">w4tchl1st</span>
       </p>
       <p class="flex items-center gap-4">
         Made by
@@ -11,7 +11,7 @@
           icon="i-ph-github-logo-duotone"
           color="gray"
           variant="link"
-          to="https://github.com/MoritzBru/watchlist"
+          to="https://github.com/MoritzBru/w4tchl1st"
           target="_blank"
           external
         >

@@ -1,17 +1,16 @@
 {
-  "name": "watchlist",
+  "name": "w4tchl1st",
   "version": "0.0.1",
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "nuxt build --preset github_pages",
+    "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "lint:config": "eslint --print-config app.vue > my-config.json"
+    "lint:fix": "eslint . --fix"
   },
   "dependencies": {
     "@iconify/json": "^2.2.199",

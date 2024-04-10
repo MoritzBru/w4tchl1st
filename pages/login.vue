@@ -25,15 +25,15 @@ watch(() => authStore.isAuthenticated, (isAuthenticated) => {
 
 <template>
   <UContainer class="flex flex-col items-center justify-center py-8 min-h-0 w-full">
-    <IconWatchlist class="size-10" />
+    <IconW4tchl1st class="size-10" />
     <p class="text-base font-semibold text-gray-900 dark:text-white mt-2">
-      Watchlist
+      w4tchl1st
     </p>
     <h1 class="text-3xl font-bold tracking-tight text-primary sm:text-5xl mt-4">
       Login
     </h1>
     <p class="mt-6 text-base/7 text-gray-500 dark:text-gray-400 text-center">
-      Please Login/Register on TMDB and authorize the Watchlist app.
+      Please Login/Register on TMDB and authorize the w4tchl1st app.
     </p>
     <div class="mt-10 flex items-center justify-center gap-x-6">
       <UButton
