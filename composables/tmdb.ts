@@ -1,7 +1,7 @@
+import type { NitroFetchOptions } from 'nitropack';
 import type {
   Account, MediaType, PageResult, StatusResponse, PageParams, Media, MediaDetails, AccountStates, Search,
 } from '~/types';
-import type { NitroFetchOptions } from 'nitropack';
 
 export function useTmdb() {
   const runtimeConfig = useRuntimeConfig();

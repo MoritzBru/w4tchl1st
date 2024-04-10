@@ -1,3 +1,9 @@
+import type { Movie, MovieDetails } from './movie';
+import type { TV, TVDetails } from './tv';
+import type { Images } from './image';
+import type { Videos } from './video';
+import type { Person, Credits } from './person';
+
 export * from './request';
 export * from './token';
 export * from './account';
@@ -7,12 +13,6 @@ export * from './tv';
 export * from './image';
 export * from './video';
 export * from './person';
-
-import type { Movie, MovieDetails } from './movie';
-import type { TV, TVDetails } from './tv';
-import type { Images } from './image';
-import type { Videos } from './video';
-import type { Person, Credits } from './person';
 
 export interface StatusResponse {
   status_code: number;

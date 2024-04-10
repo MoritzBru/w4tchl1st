@@ -9,7 +9,6 @@ import {
 const props = defineProps<{
   item: Person;
 }>();
-
 </script>
 
 <template>

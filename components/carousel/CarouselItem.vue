@@ -21,7 +21,6 @@ const badges: Badge[] = [
     icon: 'i-ph-calendar-blank-duotone',
   },
 ];
-
 </script>
 
 <template>

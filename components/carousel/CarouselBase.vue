@@ -4,7 +4,7 @@ const props = defineProps<{
 }>();
 
 defineSlots<{
-  default(props: { item: T }): any;
+  default(props: { item: T }): unknown;
 }>();
 </script>
 

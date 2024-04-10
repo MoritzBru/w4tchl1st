@@ -7,7 +7,6 @@ const props = defineProps<{
 }>();
 
 const { isLoading, isOnWatchlist, remove, add } = useWatchlistItem(props.item);
-
 </script>
 
 <template>

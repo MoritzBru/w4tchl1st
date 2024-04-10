@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 useHead({
   htmlAttrs: { lang: 'en' },
   titleTemplate: (title) => title ? `${title} · Watchlist` : 'Watchlist',

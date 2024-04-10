@@ -12,9 +12,9 @@ const isOpen = defineModel<boolean>();
 <template>
   <UModal
     v-model="isOpen"
-    :ui="{container: 'items-center', width: 'sm:max-w-3xl'}"
+    :ui="{ container: 'items-center', width: 'sm:max-w-3xl' }"
   >
-    <UCard :ui="{ ring: '',body: { padding: 'p-0 sm:p-0' }, rounded: 'overflow-hidden' }">
+    <UCard :ui="{ ring: '', body: { padding: 'p-0 sm:p-0' }, rounded: 'overflow-hidden' }">
       <template #header>
         <div class="flex items-center justify-between">
           <h3

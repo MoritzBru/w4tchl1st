@@ -57,7 +57,6 @@ const links = [
     },
   ),
 ];
-
 </script>
 
 <template>

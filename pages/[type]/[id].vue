@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { MediaDetails, MediaType } from '~/types';
+
 definePageMeta({
   key: (route) => route.fullPath,
   validate: ({ params }) => {

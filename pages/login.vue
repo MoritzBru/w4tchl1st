@@ -21,7 +21,6 @@ watch(() => authStore.isAuthenticated, (isAuthenticated) => {
   }
 },
 );
-
 </script>
 
 <template>

@@ -32,7 +32,7 @@ export const formatTime = (minutes: number) => {
   return `${hours ? `${hours}h ` : ''}${mins}min`;
 };
 
-export const conditionallyAddToArray = <Type>(condition: Boolean, item: Type, fallback?: Type) => (condition ? [item] : fallback ? [fallback] : []);
+export const conditionallyAddToArray = <Type>(condition: boolean, item: Type, fallback?: Type) => (condition ? [item] : fallback ? [fallback] : []);
 
 export const getItemTitle = (item: Media) => item.title || item.name || '';
 

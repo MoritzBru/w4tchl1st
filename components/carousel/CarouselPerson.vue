@@ -21,7 +21,7 @@ const props = defineProps<{
       :height="TMDB_THUMB_HEIGHT"
       :width="TMDB_THUMB_WIDTH"
       class="rounded-full aspect-[1/1] object-cover object-[center_25%] shadow bg-gray-200/50 dark:bg-gray-800/50 z-10"
-      :class="{'saturate-50': !props.item.profile_path}"
+      :class="{ 'saturate-50': !props.item.profile_path }"
     />
     <UAvatar
       v-else
@@ -32,7 +32,7 @@ const props = defineProps<{
       :ui="{
         background: 'bg-gray-200 dark:bg-gray-700',
         size: {
-          '3xl': 'size-44'
+          '3xl': 'size-44',
         },
         icon: {
           size: {
