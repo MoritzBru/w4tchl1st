@@ -2,15 +2,24 @@
 export default defineNuxtConfig({
   ssr: false,
   devtools: { enabled: true },
-  // typescript: {
-  //   typeCheck: true,
-  // },
   modules: [
+    '@nuxt/eslint',
     '@nuxt/image',
     '@nuxt/ui',
     '@vueuse/nuxt',
     '@pinia/nuxt',
   ],
+  eslint: {
+    config: {
+      stylistic: {
+        indent: 2,
+        quotes: 'single',
+        semi: true,
+        jsx: false,
+        arrowParens: true,
+      },
+    },
+  },
   alias: { pinia: '/node_modules/@pinia/nuxt/node_modules/pinia/dist/pinia.mjs' },
   app: {
     head: {
