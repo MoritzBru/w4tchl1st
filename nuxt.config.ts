@@ -72,7 +72,7 @@ export default defineNuxtConfig({
     },
     runtimeConfig: {
       public: {
-        baseUrl: 'w4tchl1st.netlify.app',
+        baseUrl: 'https://w4tchl1st.netlify.app',
       },
     },
   },
