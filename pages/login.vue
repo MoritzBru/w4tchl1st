@@ -1,5 +1,5 @@
 <script setup lang="ts">
-// definePageMeta({ layout: 'plain' });
+definePageMeta({ layout: 'plain' });
 
 useHead({ title: 'Login' });
 
@@ -24,7 +24,7 @@ watch(() => authStore.isAuthenticated, (isAuthenticated) => {
 </script>
 
 <template>
-  <UContainer class="flex flex-col items-center justify-center py-8 min-h-0 w-full">
+  <UContainer class="flex flex-col items-center justify-center py-8 min-h-dvh w-full">
     <IconW4tchl1st class="size-10" />
     <p class="text-base font-semibold text-gray-900 dark:text-white mt-2">
       w4tchl1st

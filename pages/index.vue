@@ -1,4 +1,5 @@
 <script setup lang="ts">
+definePageMeta({ middleware: 'auth' });
 const { getTrending, getUpcoming } = useTmdb();
 const trendingMovies = await getTrending('movie');
 const trendingTV = await getTrending('tv');

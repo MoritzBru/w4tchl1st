@@ -6,11 +6,7 @@ import type {
 export function useTmdb() {
   const runtimeConfig = useRuntimeConfig();
   const authStore = useAuthStore();
-  const token = authStore.accessToken || runtimeConfig.public.tmdbToken;
-
-  if (token === runtimeConfig.public.tmdbToken) {
-    console.warn('Using app token for tmdb request');
-  }
+  const token = authStore.accessToken;
 
   const toast = useToast();
 

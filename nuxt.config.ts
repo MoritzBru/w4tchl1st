@@ -55,11 +55,25 @@ export default defineNuxtConfig({
   ui: {
     icons: ['ph', 'bx'],
   },
+  image: {
+    domains: ['image.tmdb.org'],
+  },
   runtimeConfig: {
     public: {
-      baseUrl: 'w4tchl1st.netlify.app',
+      baseUrl: 'http://localhost:3000',
       tmdbBaseUrl: 'https://api.themoviedb.org',
       tmdbToken: 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmMjJiOThjNWRiMzNhOWM3NmQ1NzZhNmYwMWE5ODQ4NCIsInN1YiI6IjY1Y2NjZTExZTI2M2JiMDE4NjY5NGYxMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.2HTfb3dZWlTBQQq7vHuN3iWrkW3EcBZHIuurvPnht9k',
+    },
+  },
+
+  $production: {
+    image: {
+      provider: 'netlify',
+    },
+    runtimeConfig: {
+      public: {
+        baseUrl: 'w4tchl1st.netlify.app',
+      },
     },
   },
 });

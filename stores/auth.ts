@@ -27,7 +27,7 @@ export const useAuthStore = defineStore('auth', () => {
   async function createRequestToken() {
     const params = {
       ...defaultParams,
-      body: { redirect_to: `${runtimeConfig.public.baseUrl}/login?validated` },
+      body: { redirect_to: new URL('/login?validated', runtimeConfig.public.baseUrl).toString() },
     };
     const response = await $fetch<RequestTokenV4>('/4/auth/request_token', params);
     if (response?.success) {
