@@ -39,11 +39,12 @@ const badges: Badge[] = [
   <div class="relative w-full aspect-[3/2] sm:aspect-[24/9]">
     <div class="absolute top-0 right-0 sm:left-1/3">
       <NuxtImg
+        v-if="props.item.backdrop_path"
         :src="`${TMDB_IMAGE_BASE_BACKDROP}${props.item.backdrop_path}`"
         :height="TMDB_BACKDROP_HEIGHT"
         :width="TMDB_BACKDROP_WIDTH"
         alt=""
-        class="bg-gray-200/50 dark:bg-gray-800/50 h-full w-full object-cover mask-linear mask-dir-to-t sm:mask-dir-to-r mask-from-0 mask-to-100"
+        class="bg-gray-200 dark:bg-gray-800 h-full w-full object-cover mask-linear mask-dir-to-t sm:mask-dir-to-r mask-from-0 mask-to-100"
       />
     </div>
     <div class="absolute left-0 top-0 p-8 sm:p-12 sm:w-2/3 w-full">

@@ -10,6 +10,7 @@ const props = defineProps<{
 
 const itemTitle = getItemTitle(props.item);
 const itemReleaseDate = new Date(props.item.release_date || props.item.first_air_date || NaN);
+const type = getItemType(props.item);
 
 const badges: Badge[] = [
   {
@@ -21,6 +22,8 @@ const badges: Badge[] = [
     icon: 'i-ph-calendar-blank-duotone',
   },
 ];
+
+const imgSrc = props.item.poster_path ? `${TMDB_IMAGE_BASE_THUMB}${props.item.poster_path}` : `/placeholder/${type}.svg`;
 </script>
 
 <template>
@@ -29,11 +32,11 @@ const badges: Badge[] = [
     draggable="false"
   >
     <NuxtImg
-      :src="`${TMDB_IMAGE_BASE_THUMB}${props.item.poster_path}`"
+      :src="imgSrc"
       :alt="itemTitle"
       :height="TMDB_THUMB_HEIGHT"
       :width="TMDB_THUMB_WIDTH"
-      class="rounded-lg shadow bg-gray-200/50 dark:bg-gray-800/50 z-10"
+      class="rounded-lg shadow bg-gray-200 dark:bg-gray-800 z-10"
     />
     <div class="w-full bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white px-4 pt-16 pb-4 -mt-12 rounded-lg">
       <h3 class="text-base truncate">

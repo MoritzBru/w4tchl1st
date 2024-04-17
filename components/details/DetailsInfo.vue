@@ -8,6 +8,8 @@ const props = defineProps<{
   item: MediaDetails;
 }>();
 
+const type = getItemType(props.item);
+
 const details = [
   {
     label: 'Genres',
@@ -61,16 +63,18 @@ const details = [
     value: props.item.production_companies?.map((p) => p.name).join(', '),
   },
 ];
+
+const imgSrc = props.item.poster_path ? `${TMDB_IMAGE_BASE_ORIGINAL}${props.item.poster_path}` : `/placeholder/${type}.svg`;
 </script>
 
 <template>
   <UContainer class="flex flex-col sm:flex-row items-center sm:items-start gap-4">
     <NuxtImg
-      :src="`${TMDB_IMAGE_BASE_ORIGINAL}${props.item.poster_path}`"
+      :src="imgSrc"
       :alt="getItemTitle($props.item)"
       :height="TMDB_THUMB_HEIGHT"
       :width="TMDB_THUMB_WIDTH"
-      class="rounded-lg shadow bg-gray-200/50 dark:bg-gray-800/50 w-64"
+      class="rounded-lg shadow bg-gray-200 dark:bg-gray-800 w-64"
     />
 
     <div class="text-gray-700 dark:text-gray-200 p-2">

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="384" viewBox="0 0 256 384">
+  <defs>
+    <linearGradient id="gradient" x1="0" x2="1.5">
+      <stop offset="0%" stop-color="var(--c-primary)" />
+      <stop offset="100%" stop-color="var(--c-secondary)" />
+    </linearGradient>
+
+    <style>
+      :root {
+        --c-primary: #6366f1; /* indigo 500 */
+        --c-secondary: #d946ef; /* fuchsia 500 */
+      }
+      g {
+        fill: url('#gradient');
+        transform: scale(0.5) translate(50%, 50%);
+      }
+    </style>
+  </defs>
+
+  <g>
+    <!-- i-ph-user-duotone -->
+    <path d="M192 96a64 64 0 1 1-64-64a64 64 0 0 1 64 64Z" opacity="0.2"/>
+    <path d="M230.92 212c-15.23-26.33-38.7-45.21-66.09-54.16a72 72 0 1 0-73.66 0c-27.39 8.94-50.86 27.82-66.09 54.16a8 8 0 1 0 13.85 8c18.84-32.56 52.14-52 89.07-52s70.23 19.44 89.07 52a8 8 0 1 0 13.85-8ZM72 96a56 56 0 1 1 56 56a56.06 56.06 0 0 1-56-56Z"/>
+  </g>
+</svg>

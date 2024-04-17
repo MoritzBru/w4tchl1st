@@ -22,7 +22,6 @@
 - essentials
   - error handling
   - 404 page
-  - image fallback for carousel/list/detail
   - add loading indicator to auth composable and show on login page
   - make cards clickable
 
