@@ -8,7 +8,7 @@ const upcomingTV = await getUpcoming('tv');
 </script>
 
 <template>
-  <main class="mt-24">
+  <main class="sm:mt-24">
     <UContainer>
       <SectionHeading>
         Trending Movies

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { typeToTitleLookup } from '~/constants/ui';
 import type { Media, MediaType } from '~/types';
 
 definePageMeta({
@@ -12,7 +13,7 @@ definePageMeta({
 const route = useRoute();
 const type = computed(() => route.params.type as MediaType || 'movie');
 
-useHead({ title: type.value === 'movie' ? 'Movies' : 'TV Shows' });
+useHead({ title: typeToTitleLookup[type.value] });
 
 const { getWatchlist } = useTmdb();
 
@@ -49,10 +50,10 @@ watch(() => arrivedState.bottom, () => {
 </script>
 
 <template>
-  <main class="mt-24">
+  <main class="sm:mt-24">
     <UContainer>
       <SectionHeading>
-        Watchlist {{ type }}
+        Watchlist {{ typeToTitleLookup[type] }}
       </SectionHeading>
       <ListBase
         :type="type"

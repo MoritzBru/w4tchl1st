@@ -58,8 +58,8 @@ watch(() => arrivedState.bottom, () => {
 </script>
 
 <template>
-  <main class="mt-24">
-    <UContainer>
+  <main class="sm:mt-24">
+    <UContainer class="mt-12">
       <UInput
         v-model="term"
         icon="i-ph-magnifying-glass-duotone"
