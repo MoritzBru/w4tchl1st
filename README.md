@@ -23,7 +23,6 @@
   - error handling
   - 404 page
   - add loading indicator to auth composable and show on login page
-  - make cards clickable
 
 - refactors
   - auth store to composable and remove pinia
