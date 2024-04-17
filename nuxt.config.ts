@@ -43,6 +43,14 @@ export default defineNuxtConfig({
           rel: 'manifest',
           href: 'site.webmanifest',
         },
+        {
+          rel: 'preconnect',
+          href: 'https://image.tmdb.org',
+        },
+        {
+          rel: 'preconnect',
+          href: 'https://api.themoviedb.org',
+        },
       ],
       meta: [
         {
