@@ -10,12 +10,21 @@ export function useWatchlistItem(item: Media & Partial<MediaDetails>) {
   const _type = getItemType(item);
   const _title = getItemTitle(item);
 
-  const _accountStates = ref(item?.account_states || null);
+  function initAccountStates(item: Media & Partial<MediaDetails>) {
+    if (item?.account_states) return item.account_states;
+    const route = useRoute();
+    if (route.meta.isWatchlist) {
+      return { watchlist: true };
+    }
+    return null;
+  }
+
+  const _accountStates = ref(initAccountStates(item));
 
   if (_accountStates.value?.watchlist === undefined) {
     const { state, isLoading: loading } = useAsyncState(getAccountStates(_type, item.id), null);
     syncRefs(loading, isLoading);
-    syncRef(state, _accountStates);
+    syncRefs(state, _accountStates);
   }
 
   const isOnWatchlist = computed<boolean>({
@@ -35,7 +44,6 @@ export function useWatchlistItem(item: Media & Partial<MediaDetails>) {
         title: 'Successfully removed from Watchlist',
         description: _title,
         icon: 'i-ph-check-circle-duotone',
-        color: 'green',
       });
       isOnWatchlist.value = false;
     }
@@ -61,7 +69,6 @@ export function useWatchlistItem(item: Media & Partial<MediaDetails>) {
         title: 'Successfully added to Watchlist',
         description: _title,
         icon: 'i-ph-check-circle-duotone',
-        color: 'green',
       });
       isOnWatchlist.value = true;
     }

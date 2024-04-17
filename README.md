@@ -25,20 +25,18 @@
   - image fallback for carousel/list/detail
   - add loading indicator to auth composable and show on login page
   - make cards clickable
-  - preconnect origins
 
 - refactors
   - auth store to composable and remove pinia
   - watchlist date format green released/ red not released
   - make watchlsits more condensed (get rid of description)
-  - rename nav items (home -> browse, tv -> tv shows)
 
 - new features
   - description and Open Graph/Twitter
   - view transitions
   - pwa
-  - i18n for app and api (usePreferredLanguages)
-  - person page
-  - genre page
   - animations on list lazy load entering and on search
   - make watchlists sortable
+  - person page
+  - genre page
+  - i18n for app and api (usePreferredLanguages)

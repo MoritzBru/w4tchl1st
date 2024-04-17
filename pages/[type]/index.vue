@@ -8,6 +8,7 @@ definePageMeta({
     return ['movie', 'tv'].includes(params.type as MediaType);
   },
   middleware: 'auth',
+  isWatchlist: true,
 });
 
 const route = useRoute();
