@@ -6,22 +6,22 @@
         <span class="font-semibold">w4tchl1st</span>
       </p>
       <p class="flex items-center gap-4">
-        Made by
+        Open Source on
         <UButton
           icon="i-ph-github-logo-duotone"
-          color="gray"
+          color="white"
           variant="link"
           to="https://github.com/MoritzBru/w4tchl1st"
           target="_blank"
           external
         >
-          Moritz Brunnengräber
+          GitHub
         </UButton>
       </p>
       <p class="flex items-center gap-4">
         Data provided by
         <UButton
-          color="gray"
+          color="white"
           variant="link"
           to="https://www.themoviedb.org/"
           title="The Movie Database"

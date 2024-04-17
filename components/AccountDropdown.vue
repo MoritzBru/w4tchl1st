@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { TMDB_IMAGE_BASE_ORIGINAL } from '~/constants/image';
+import { TMDB_IMAGE_BASE_THUMB } from '~/constants/image';
 
 const authStore = useAuthStore();
 const { getAccount } = useTmdb();
@@ -11,7 +11,7 @@ const { changeMovieWebBase } = useMovieWeb();
 const items = [
   [
     {
-      label: account?.username || 'Guest',
+      label: account?.username,
       disabled: true,
     },
   ],
@@ -68,8 +68,10 @@ const items = [
       <UAvatar
         icon="i-ph-user-duotone"
         size="md"
-        :src="`${TMDB_IMAGE_BASE_ORIGINAL}${account?.avatar?.tmdb?.avatar_path}`"
+        :src="`${TMDB_IMAGE_BASE_THUMB}${account?.avatar?.tmdb?.avatar_path}`"
+        :alt="account?.username"
       />
+      <span class="sr-only">User Modal</span>
     </UButton>
 
     <template #colorMode="{ item }">
