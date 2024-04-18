@@ -15,5 +15,5 @@ export const getItemIcon = (item: Media): string => {
 
 export const getItemUrl = (item: Media): string => {
   const type = getItemType(item);
-  return `${type}/${item.id}`;
+  return `/${type}/${item.id}`;
 };
