@@ -9,32 +9,26 @@ const upcomingTV = await getUpcoming('tv');
 
 <template>
   <main class="sm:mt-24">
-    <UContainer>
-      <SectionHeading>
+    <UContainer class="px-0">
+      <SectionHeading class="max-sm:px-4">
         Trending Movies
       </SectionHeading>
-    </UContainer>
-    <CarouselBase :items="trendingMovies?.results || []" />
+      <CarouselBase :items="trendingMovies?.results || []" />
 
-    <UContainer>
-      <SectionHeading>
+      <SectionHeading class="max-sm:px-4">
         Upcoming Movies
       </SectionHeading>
-    </UContainer>
-    <CarouselBase :items="upcomingMovies?.results || []" />
+      <CarouselBase :items="upcomingMovies?.results || []" />
 
-    <UContainer>
-      <SectionHeading>
+      <SectionHeading class="max-sm:px-4">
         Trending TV Shows
       </SectionHeading>
-    </UContainer>
-    <CarouselBase :items="trendingTV?.results || []" />
+      <CarouselBase :items="trendingTV?.results || []" />
 
-    <UContainer>
-      <SectionHeading>
+      <SectionHeading class="max-sm:px-4">
         Upcoming TV Shows
       </SectionHeading>
+      <CarouselBase :items="upcomingTV?.results || []" />
     </UContainer>
-    <CarouselBase :items="upcomingTV?.results || []" />
   </main>
 </template>

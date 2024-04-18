@@ -41,39 +41,45 @@ useHead({
       :item="item"
       :type="type"
     />
+
     <DetailsInfo
       :item="item"
       class="mt-8"
     />
-    <template v-if="item?.credits?.cast.length">
-      <SectionHeading class="px-10 mt-8">
-        Cast
-      </SectionHeading>
-      <CarouselBase
-        v-slot="carouselProps"
-        :items="item?.credits?.cast || []"
-      >
-        <CarouselPerson :item="carouselProps.item" />
-      </CarouselBase>
-    </template>
-    <template v-if="item?.credits?.crew">
-      <SectionHeading class="px-10 mt-8">
-        Crew
-      </SectionHeading>
-      <CarouselBase
-        v-slot="carouselProps"
-        :items="item?.credits?.crew || []"
-      >
-        <CarouselPerson :item="carouselProps.item" />
-      </CarouselBase>
-    </template>
-    <template v-if="item?.recommendations?.results">
-      <SectionHeading class="px-10 mt-8">
-        Recommendations
-      </SectionHeading>
-      <CarouselBase
-        :items="item?.recommendations?.results || []"
-      />
-    </template>
+
+    <UContainer class="px-0">
+      <template v-if="item?.credits?.cast.length">
+        <SectionHeading class="max-sm:px-4">
+          Cast
+        </SectionHeading>
+        <CarouselBase
+          v-slot="carouselProps"
+          :items="item?.credits?.cast || []"
+        >
+          <CarouselPerson :item="carouselProps.item" />
+        </CarouselBase>
+      </template>
+
+      <template v-if="item?.credits?.crew">
+        <SectionHeading class="max-sm:px-4">
+          Crew
+        </SectionHeading>
+        <CarouselBase
+          v-slot="carouselProps"
+          :items="item?.credits?.crew || []"
+        >
+          <CarouselPerson :item="carouselProps.item" />
+        </CarouselBase>
+      </template>
+
+      <template v-if="item?.recommendations?.results">
+        <SectionHeading class="max-sm:px-4">
+          Recommendations
+        </SectionHeading>
+        <CarouselBase
+          :items="item?.recommendations?.results || []"
+        />
+      </template>
+    </UContainer>
   </article>
 </template>
