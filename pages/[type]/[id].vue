@@ -15,24 +15,28 @@ const id = computed(() => route.params.id as string);
 
 const { getDetails } = useTmdb();
 
-const item = await getDetails(type.value, id.value) as MediaDetails;
+let item: MediaDetails;
 
-if (!item) {
-  showError({
-    statusCode: 404,
-    statusMessage: 'Item Not Found',
+try {
+  item = await getDetails(type.value, id.value) as MediaDetails;
+
+  useHead({
+    title: getItemTitle(item),
+    meta: [
+      {
+        name: 'description',
+        content: item?.overview,
+      },
+    ],
   });
 }
-
-useHead({
-  title: item?.name || item?.title,
-  meta: [
-    {
-      name: 'description',
-      content: item?.overview,
-    },
-  ],
-});
+catch {
+  throw createError({
+    statusCode: 404,
+    statusMessage: 'Item Not Found',
+    fatal: true,
+  });
+}
 </script>
 
 <template>

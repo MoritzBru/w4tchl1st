@@ -20,8 +20,6 @@
 ## TODOs
 
 - essentials
-  - error handling
-  - 404 page
   - add loading indicator to auth composable and show on login page
 
 - refactors
