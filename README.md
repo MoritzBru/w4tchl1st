@@ -23,14 +23,13 @@
   - add loading indicator to auth composable and show on login page
 
 - refactors
-  - auth store to composable and remove pinia
   - watchlist date format green released/ red not released
   - make watchlsits more condensed (get rid of description)
 
 - new features
   - description and Open Graph/Twitter
-  - view transitions
   - pwa
+  - view transitions
   - animations on list lazy load entering and on search
   - make watchlists sortable
   - person page

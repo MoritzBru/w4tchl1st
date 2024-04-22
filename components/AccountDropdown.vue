@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { TMDB_IMAGE_BASE_THUMB } from '~/constants/image';
 
-const authStore = useAuthStore();
+const { accountId, isAuthenticated, deleteAccessToken } = useAuth();
 const { getAccount } = useTmdb();
-const account = await getAccount(authStore.accountId);
+const account = await getAccount(accountId.value);
 
 const { colorMode, switchColorMode } = useColormode();
 const { changeMovieWebBase } = useMovieWeb();
@@ -30,12 +30,12 @@ const items = [
   ],
   [
     ...conditionallyAddToArray(
-      authStore.isAuthenticated,
+      isAuthenticated.value,
       {
         label: 'Sign out',
         icon: 'i-ph-sign-out-duotone',
         click: async () => {
-          await authStore.deleteAccessToken();
+          await deleteAccessToken();
           navigateTo('/login');
         },
       },

@@ -7,7 +7,6 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/ui',
     '@vueuse/nuxt',
-    '@pinia/nuxt',
   ],
   eslint: {
     config: {

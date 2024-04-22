@@ -2,7 +2,7 @@ import { useLocalStorage } from '@vueuse/core';
 import type { RequestTokenV4, AccessTokenV4 } from '~/types';
 import { TMDB_AUTH_ACCESS_URL } from '~/constants/auth';
 
-export const useAuthStore = defineStore('auth', () => {
+export function useAuth() {
   const requestToken = useLocalStorage('wl-requestToken', '');
   const accessToken = useLocalStorage('wl-accessToken', '');
   const accountId = useLocalStorage('wl-accountId', '');
@@ -74,4 +74,4 @@ export const useAuthStore = defineStore('auth', () => {
     createAccessToken,
     deleteAccessToken,
   };
-});
+}

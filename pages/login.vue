@@ -3,24 +3,23 @@ definePageMeta({ layout: 'plain' });
 
 useHead({ title: 'Login' });
 
-const authStore = useAuthStore();
+const { isAuthenticated, validationUrl, requestToken, createRequestToken, createAccessToken } = useAuth();
 
 const route = useRoute();
 
-if (!authStore.isAuthenticated && !('validated' in route.query)) {
-  authStore.createRequestToken();
+if (!isAuthenticated.value && !('validated' in route.query)) {
+  createRequestToken();
 }
 
-if (authStore.requestToken && ('validated' in route.query)) {
-  authStore.createAccessToken();
+if (requestToken.value && ('validated' in route.query)) {
+  createAccessToken();
 }
 
-watch(() => authStore.isAuthenticated, (isAuthenticated) => {
-  if (isAuthenticated) {
+watch(isAuthenticated, (_isAuthenticated) => {
+  if (_isAuthenticated) {
     navigateTo('/', { replace: true });
   }
-},
-);
+});
 </script>
 
 <template>
@@ -39,7 +38,7 @@ watch(() => authStore.isAuthenticated, (isAuthenticated) => {
       <UButton
         size="xl"
         color="white"
-        :to="authStore.validationUrl"
+        :to="validationUrl"
         external
       >
         <IconTmdbShort class="h-2 w-auto" />

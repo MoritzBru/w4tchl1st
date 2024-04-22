@@ -5,15 +5,14 @@ import type {
 
 export function useTmdb() {
   const runtimeConfig = useRuntimeConfig();
-  const authStore = useAuthStore();
-  const token = authStore.accessToken;
+  const { accountId, accessToken } = useAuth();
 
   const toast = useToast();
 
   const $tmdb = $fetch.create({
     baseURL: runtimeConfig.public.tmdbBaseUrl,
     headers: {
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${accessToken.value}`,
       Accept: 'application/json',
     },
     async onResponseError({ response }) {
@@ -60,7 +59,7 @@ export function useTmdb() {
         ...query,
       },
     };
-    return $tmdb<PageResult<Media> | null>(`4/account/${authStore.accountId}/${type}/watchlist`, payload);
+    return $tmdb<PageResult<Media> | null>(`4/account/${accountId.value}/${type}/watchlist`, payload);
   }
 
   function addToWatchlist(type: MediaType, id: string) {
@@ -72,7 +71,7 @@ export function useTmdb() {
         watchlist: true,
       },
     };
-    return $tmdb<StatusResponse | null>(`3/account/${authStore.accountId}/watchlist`, payload);
+    return $tmdb<StatusResponse | null>(`3/account/${accountId.value}/watchlist`, payload);
   }
 
   function removeFromWatchlist(type: MediaType, id: string) {
@@ -84,7 +83,7 @@ export function useTmdb() {
         watchlist: false,
       },
     };
-    return $tmdb<StatusResponse | null>(`3/account/${authStore.accountId}/watchlist`, payload);
+    return $tmdb<StatusResponse | null>(`3/account/${accountId.value}/watchlist`, payload);
   }
 
   function getDetails(type: MediaType, id: string) {
