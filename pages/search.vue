@@ -92,10 +92,9 @@ watch(() => arrivedState.bottom, () => {
         class="mt-12"
         :items="results"
       />
-      <UIcon
+      <LoadingThrobber
         v-if="isLoading"
-        name="i-ph-circle-notch-duotone"
-        class="block mt-8 size-12 mx-auto animate-spin"
+        class="mt-8"
       />
     </UContainer>
   </main>

@@ -7,6 +7,8 @@ const { isAuthenticated, validationUrl, requestToken, createRequestToken, create
 
 const route = useRoute();
 
+const isLoading = ref(false);
+
 if (!isAuthenticated.value && !('validated' in route.query)) {
   createRequestToken();
 }
@@ -15,11 +17,16 @@ if (requestToken.value && ('validated' in route.query)) {
   createAccessToken();
 }
 
-watch(isAuthenticated, (_isAuthenticated) => {
-  if (_isAuthenticated) {
-    navigateTo('/', { replace: true });
-  }
-});
+watch(
+  isAuthenticated,
+  (_isAuthenticated) => {
+    if (_isAuthenticated) {
+      isLoading.value = true;
+      navigateTo('/', { replace: true });
+    }
+  },
+  { immediate: true },
+);
 </script>
 
 <template>
@@ -35,7 +42,9 @@ watch(isAuthenticated, (_isAuthenticated) => {
       Please Login/Register on TMDB and authorize the w4tchl1st app.
     </p>
     <div class="mt-10 flex items-center justify-center gap-x-6">
+      <LoadingThrobber v-if="isLoading" />
       <UButton
+        v-else
         size="xl"
         color="white"
         :to="validationUrl"

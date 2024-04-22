@@ -19,9 +19,6 @@
 
 ## TODOs
 
-- essentials
-  - add loading indicator to auth composable and show on login page
-
 - refactors
   - watchlist date format green released/ red not released
   - make watchlsits more condensed (get rid of description)
