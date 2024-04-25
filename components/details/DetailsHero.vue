@@ -14,7 +14,7 @@ const props = defineProps<{
 
 const modal = useModal();
 
-const { getMovieWebUrl } = useMovieWeb();
+const { getWatchUrl } = useWatchLink();
 
 const trailer = props.item.videos?.results?.find((video) => video.type === 'Trailer' && video.site === 'YouTube');
 
@@ -73,13 +73,13 @@ const badges: Badge[] = [
             @click="openTrailerModal"
           />
           <UButton
-            v-if="getMovieWebUrl(item.id, type)"
+            v-if="getWatchUrl(item, type)"
             icon="i-ph-play-duotone"
             label="Watch"
             variant="soft"
             color="secondary"
             size="md"
-            :to="getMovieWebUrl(item.id, type)"
+            :to="getWatchUrl(item, type)"
             external
             target="_blank"
           />

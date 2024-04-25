@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const isOpen = defineModel<boolean>();
 
-const { movieWebBase } = useMovieWeb();
+const { watchLink } = useWatchLink();
 </script>
 
 <template>
@@ -15,15 +15,7 @@ const { movieWebBase } = useMovieWeb();
           <h3
             class="text-base font-semibold leading-6 text-gray-900 dark:text-white flex items-center"
           >
-            Movie Web Base
-            <UButton
-              icon="i-ph-info-duotone"
-              size="sm"
-              square
-              variant="link"
-              to="https://movie-web.github.io/docs/instances"
-              external
-            />
+            Configure Watch Link
           </h3>
           <UButton
             color="gray"
@@ -34,7 +26,7 @@ const { movieWebBase } = useMovieWeb();
         </div>
       </template>
 
-      <UInput v-model="movieWebBase" />
+      <UInput v-model="watchLink" />
     </UCard>
   </UModal>
 </template>

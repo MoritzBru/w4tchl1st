@@ -6,7 +6,7 @@ const { getAccount } = useTmdb();
 const account = await getAccount(accountId.value);
 
 const { colorMode, switchColorMode } = useColormode();
-const { changeMovieWebBase } = useMovieWeb();
+const { changeWatchLink } = useWatchLink();
 
 const items = [
   [
@@ -23,9 +23,9 @@ const items = [
       click: switchColorMode,
     },
     {
-      label: 'Change Movie Web',
-      icon: 'i-ph-film-strip-fill',
-      click: changeMovieWebBase,
+      label: 'Change Watch Link',
+      icon: 'i-ph-play-pause-duotone',
+      click: changeWatchLink,
     },
   ],
   [
