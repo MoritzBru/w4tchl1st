@@ -75,7 +75,7 @@ const items = [
     </UButton>
 
     <template #colorMode="{ item }">
-      <span :class="[item.icon, 'flex-shrink-0 w-5 h-5 text-gray-400 dark:text-gray-500']" />
+      <span :class="[item.icon, 'flex-shrink-0 size-5 text-gray-400 dark:text-gray-500']" />
       <span class="truncate">{{ item.label }}</span>
       <UBadge
         color="primary"

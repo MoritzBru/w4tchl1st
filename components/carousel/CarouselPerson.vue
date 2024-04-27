@@ -28,7 +28,7 @@ const imgSrc = props.item.profile_path ? `${TMDB_IMAGE_BASE_THUMB}${props.item.p
         {{ props.item.name }}
       </h3>
       <p class="text-sm truncate">
-        {{ props.item.character || props.item.job }}
+        {{ props.item.character || props.item.job || '&NonBreakingSpace;' }}
       </p>
     </div>
   </div>
