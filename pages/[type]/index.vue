@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { typeToTitleLookup } from '~/constants/ui';
 import type { Media, MediaType } from '~/types';
+import { GridBase, ListBase } from '#components';
 
 definePageMeta({
   key: (route) => route.fullPath,
@@ -48,15 +49,56 @@ watch(() => arrivedState.bottom, () => {
     loadNext();
   }
 });
+
+const viewModesOptions = [
+  {
+    componentName: 'gridBase',
+    label: 'Grid',
+    icon: 'i-ph-grid-four-duotone',
+  },
+  {
+    componentName: 'listBase',
+    label: 'List',
+    icon: 'i-ph-list-duotone',
+  },
+];
+
+const components = {
+  gridBase: markRaw(GridBase),
+  listBase: markRaw(ListBase),
+};
+
+const selectedViewMode = useState('viewMode', () => viewModesOptions[0]);
 </script>
 
 <template>
   <main class="sm:mt-24">
     <UContainer>
-      <SectionHeading>
-        Watchlist {{ typeToTitleLookup[type] }}
-      </SectionHeading>
-      <ListBase
+      <header class="flex justify-between items-center flex-wrap py-4 mt-12">
+        <SectionHeading class="!py-0 !mt-0">
+          Watchlist {{ typeToTitleLookup[type] }}
+        </SectionHeading>
+
+        <UFormGroup
+          label="View mode"
+        >
+          <USelectMenu
+            v-model="selectedViewMode"
+            :options="viewModesOptions"
+            aria-label="View mode"
+          >
+            <template #leading>
+              <UIcon
+                :name="selectedViewMode.icon"
+                class="size-5"
+              />
+            </template>
+          </USelectMenu>
+        </UFormGroup>
+      </header>
+
+      <Component
+        :is="components[selectedViewMode.componentName as keyof typeof components]"
         :type="type"
         :items="watchlist"
       />
