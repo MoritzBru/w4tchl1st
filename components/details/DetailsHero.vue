@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { YoutubeModal } from '#components';
 import type {
-  MediaDetails, Badge, MediaType,
+  MediaDetails, MediaType,
 } from '~/types';
 import {
   TMDB_IMAGE_BASE_BACKDROP, TMDB_BACKDROP_WIDTH, TMDB_BACKDROP_HEIGHT,
@@ -23,16 +23,7 @@ function openTrailerModal() {
   modal.open(YoutubeModal, { video: trailer });
 }
 
-const badges: Badge[] = [
-  {
-    label: formatVote(props.item.vote_average),
-    icon: 'i-ph-star-duotone',
-  },
-  {
-    label: `${formatVote(props.item.vote_count)} Votes`,
-    icon: 'i-ph-users-duotone',
-  },
-];
+const { ratingBadge, voteNumberBadge } = useItemBadges(props.item);
 </script>
 
 <template>
@@ -52,7 +43,7 @@ const badges: Badge[] = [
         <h1 class="text-3xl sm:text-4xl line-clamp-2 text-shadow shadow-white dark:shadow-black">
           {{ props.item.title || props.item.name }}
         </h1>
-        <BadgeList :badges="badges" />
+        <BadgeList :badges="[ratingBadge, voteNumberBadge]" />
         <p
           v-if="props.item.tagline"
           class="text-xl font-light tracking-wide line-clamp-1"

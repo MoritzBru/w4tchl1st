@@ -13,11 +13,12 @@ const props = defineProps<{
       :key="index"
       color="gray"
       variant="soft"
+      :ui="{ rounded: 'rounded-full' }"
     >
       <UIcon
         v-if="badge.icon"
         :name="badge.icon"
-        class="text-secondary-600 mr-1"
+        :class="['mr-1', badge?.iconClass]"
       />
       {{ badge.label }}
     </UBadge>

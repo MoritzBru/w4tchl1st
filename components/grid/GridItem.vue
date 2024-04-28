@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Media, Badge } from '~/types';
+import type { Media } from '~/types';
 import {
   TMDB_IMAGE_BASE_THUMB, TMDB_THUMB_HEIGHT, TMDB_THUMB_WIDTH,
 } from '~/constants/image';
@@ -9,19 +9,9 @@ const props = defineProps<{
 }>();
 
 const itemTitle = getItemTitle(props.item);
-const itemReleaseDate = new Date(props.item.release_date || props.item.first_air_date || NaN);
 const type = getItemType(props.item);
 
-const badges: Badge[] = [
-  {
-    label: formatVote(props.item.vote_average),
-    icon: 'i-ph-star-duotone',
-  },
-  {
-    label: isNaN(Number(itemReleaseDate)) ? 'unknown' : formatDate(itemReleaseDate),
-    icon: 'i-ph-calendar-blank-duotone',
-  },
-];
+const { defaultBadges } = useItemBadges(props.item);
 
 const imgSrc = props.item.poster_path ? `${TMDB_IMAGE_BASE_THUMB}${props.item.poster_path}` : `/placeholder/${type}.svg`;
 </script>
@@ -47,7 +37,7 @@ const imgSrc = props.item.poster_path ? `${TMDB_IMAGE_BASE_THUMB}${props.item.po
         {{ itemTitle }}
       </h3>
       <BadgeList
-        :badges="badges"
+        :badges="defaultBadges"
         class="mt-3 justify-between"
       />
       <div class="flex gap-2 justify-between items-start mt-3">
