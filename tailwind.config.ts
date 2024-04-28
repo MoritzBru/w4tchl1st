@@ -9,10 +9,11 @@ export default <Partial<Config>>{
   theme: {
     extend: {
       colors: {
-        // primary & gray are set by nuxt/ui
-        primary: colors.indigo,
-        gray: colors.zinc,
-        secondary: colors.fuchsia,
+        // primary & gray are set by nuxt/ui (c.f. app.config.ts)
+        secondary: {
+          ...colors.fuchsia,
+          DEFAULT: colors.fuchsia[500],
+        },
       },
       textShadow: {
         sm: '0 1px 2px var(--tw-shadow-color)',

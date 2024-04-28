@@ -20,14 +20,9 @@ let item: MediaDetails;
 try {
   item = await getDetails(type.value, id.value) as MediaDetails;
 
-  useHead({
+  useSeoMeta({
     title: getItemTitle(item),
-    meta: [
-      {
-        name: 'description',
-        content: item?.overview,
-      },
-    ],
+    description: item?.overview,
   });
 }
 catch {

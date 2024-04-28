@@ -19,51 +19,6 @@ export default defineNuxtConfig({
       },
     },
   },
-  alias: { pinia: '/node_modules/@pinia/nuxt/node_modules/pinia/dist/pinia.mjs' },
-  app: {
-    head: {
-      link: [
-        {
-          rel: 'preconnect',
-          href: 'https://image.tmdb.org',
-        },
-        {
-          rel: 'preconnect',
-          href: 'https://api.themoviedb.org',
-        },
-        {
-          rel: 'icon',
-          type: 'image/svg+xml',
-          href: 'favicon.svg',
-          tagPriority: 'low',
-        },
-        {
-          rel: 'apple-touch-icon',
-          sizes: '180x180',
-          href: 'apple-touch-icon.png',
-          tagPriority: 'low',
-        },
-        {
-          rel: 'mask-icon',
-          color: '#6366f1',
-          href: 'mask-icon.svg',
-          tagPriority: 'low',
-        },
-        {
-          rel: 'manifest',
-          href: 'site.webmanifest',
-          tagPriority: 'low',
-        },
-      ],
-      meta: [
-        {
-          name: 'theme-color',
-          content: '#6366f1',
-          tagPriority: 'low',
-        },
-      ],
-    },
-  },
   ui: {
     icons: ['ph', 'bx'],
   },

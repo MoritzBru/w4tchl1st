@@ -20,7 +20,6 @@
 ## TODOs
 
 - new features
-  - description and Open Graph/Twitter
   - pwa
   - view transitions
   - animations on list lazy load entering and on search

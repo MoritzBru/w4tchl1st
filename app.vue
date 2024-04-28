@@ -1,18 +1,62 @@
 <script setup lang="ts">
 useHead({
   htmlAttrs: { lang: 'en' },
-  titleTemplate: (title) => title ? `${title} · w4tchl1st` : 'w4tchl1st',
-  meta: [
+  link: [
     {
-      name: 'description',
-      content: 'A w4tchl1st based on TMDB',
+      rel: 'preconnect',
+      href: 'https://image.tmdb.org',
+    },
+    {
+      rel: 'preconnect',
+      href: 'https://api.themoviedb.org',
+    },
+    {
+      rel: 'icon',
+      type: 'image/svg+xml',
+      href: '/favicon.svg',
+      tagPriority: 'low',
+    },
+    {
+      rel: 'apple-touch-icon',
+      sizes: '180x180',
+      href: '/apple-touch-icon.png',
+      tagPriority: 'low',
+    },
+    {
+      rel: 'mask-icon',
+      color: '#6366f1',
+      href: '/mask-icon.svg',
+      tagPriority: 'low',
+    },
+    {
+      rel: 'manifest',
+      href: '/site.webmanifest',
+      tagPriority: 'low',
     },
   ],
+  meta: [
+    { charset: 'utf-8' },
+    { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+  ],
+});
+
+const runtimeConfig = useRuntimeConfig();
+
+useSeoMeta({
+  titleTemplate: (title) => title ? `${title} · w4tchl1st` : 'w4tchl1st',
+  description: 'A w4tchl1st based on TMDB.',
+  themeColor: '#6366f1',
+  ogTitle: 'w4tchl1st',
+  ogDescription: 'A w4tchl1st based on TMDB.',
+  ogType: 'website',
+  ogUrl: runtimeConfig.public.baseUrl,
+  ogImage: new URL('/og.png', runtimeConfig.public.baseUrl).toString(),
+  twitterCard: 'summary_large_image',
 });
 </script>
 
 <template>
-  <NuxtLoadingIndicator color="repeating-linear-gradient(to right, #6366f1 ,#c026d3)" />
+  <NuxtLoadingIndicator color="repeating-linear-gradient(to right, #6366f1, #c026d3)" />
   <NuxtLayout>
     <NuxtPage />
   </NuxtLayout>
