@@ -7,6 +7,7 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/ui',
     '@vueuse/nuxt',
+    '@vite-pwa/nuxt',
   ],
   eslint: {
     config: {
@@ -24,6 +25,54 @@ export default defineNuxtConfig({
   },
   image: {
     domains: ['image.tmdb.org'],
+  },
+  pwa: {
+    registerType: 'autoUpdate',
+    strategies: 'generateSW',
+    workbox: {
+      runtimeCaching: [
+        {
+          urlPattern: /^https:\/\/image\.tmdb\.org\/.*/i,
+          handler: 'CacheFirst',
+          options: {
+            cacheName: 'tmdb-images',
+            expiration: {
+              maxAgeSeconds: 60 * 60 * 24 * 365, // 365 days
+            },
+            cacheableResponse: {
+              statuses: [0, 200],
+            },
+          },
+        },
+      ],
+    },
+    manifest: {
+      name: 'w4tchl1st',
+      short_name: 'w4tchl1st',
+      description: 'A Watchlist based on TMDB.',
+      theme_color: '#6366f1',
+      background_color: '#09090b',
+      display: 'standalone',
+      icons: [
+        {
+          src: '/android-chrome-192x192.png',
+          sizes: '192x192',
+          type: 'image/png',
+        },
+        {
+          src: '/android-chrome-512x512.png',
+          sizes: '512x512',
+          type: 'image/png',
+        },
+      ],
+    },
+    client: {
+      installPrompt: true,
+    },
+    devOptions: {
+      enabled: true,
+      type: 'module',
+    },
   },
   runtimeConfig: {
     public: {

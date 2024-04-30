@@ -5,10 +5,12 @@ useHead({
     {
       rel: 'preconnect',
       href: 'https://image.tmdb.org',
+      crossorigin: 'anonymous',
     },
     {
       rel: 'preconnect',
       href: 'https://api.themoviedb.org',
+      crossorigin: 'anonymous',
     },
     {
       rel: 'icon',
@@ -56,6 +58,7 @@ useSeoMeta({
 </script>
 
 <template>
+  <NuxtPwaAssets />
   <NuxtLoadingIndicator color="repeating-linear-gradient(to right, #6366f1, #c026d3)" />
   <NuxtLayout>
     <NuxtPage />
