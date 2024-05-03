@@ -1,3 +1,6 @@
+// @ts-expect-error: no declaration exported lib
+import tailwindMaskImage from '@pyncz/tailwind-mask-image';
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   ssr: false,
@@ -18,6 +21,13 @@ export default defineNuxtConfig({
         jsx: false,
         arrowParens: true,
       },
+    },
+  },
+  tailwindcss: {
+    config: {
+      plugins: [
+        tailwindMaskImage,
+      ],
     },
   },
   ui: {
@@ -70,7 +80,7 @@ export default defineNuxtConfig({
       installPrompt: true,
     },
     devOptions: {
-      enabled: true,
+      // enabled: true,
       type: 'module',
     },
   },
