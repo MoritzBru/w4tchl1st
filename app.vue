@@ -30,11 +30,6 @@ useHead({
       href: '/mask-icon.svg',
       tagPriority: 'low',
     },
-    {
-      rel: 'manifest',
-      href: '/site.webmanifest',
-      tagPriority: 'low',
-    },
   ],
   meta: [
     { charset: 'utf-8' },
