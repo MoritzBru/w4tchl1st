@@ -37,17 +37,31 @@ export default defineNuxtConfig({
     domains: ['image.tmdb.org'],
   },
   pwa: {
-    registerType: 'autoUpdate',
     strategies: 'generateSW',
+    registerType: 'autoUpdate',
     workbox: {
+      globPatterns: ['**/*.{js,css,html,png,svg,ico}'],
       runtimeCaching: [
         {
-          urlPattern: /^https:\/\/image\.tmdb\.org\/.*/i,
+          urlPattern: ({ url }) => url.href.includes('image.tmdb.org'),
           handler: 'CacheFirst',
           options: {
             cacheName: 'tmdb-images',
             expiration: {
-              maxAgeSeconds: 60 * 60 * 24 * 365, // 365 days
+              maxAgeSeconds: 60 * 60 * 24 * 30,
+            },
+            cacheableResponse: {
+              statuses: [0, 200],
+            },
+          },
+        },
+        {
+          urlPattern: ({ url }) => url.href.includes('api.themoviedb.org'),
+          handler: 'NetworkFirst',
+          options: {
+            cacheName: 'tmdb-api',
+            expiration: {
+              maxAgeSeconds: 60 * 60 * 24 * 30,
             },
             cacheableResponse: {
               statuses: [0, 200],

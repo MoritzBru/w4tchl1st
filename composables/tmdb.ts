@@ -46,7 +46,7 @@ export function useTmdb() {
     const payload: NitroFetchOptions<'GET'> = {
       query: {
         ...query,
-        [queryLookup[type]]: new Date().toISOString(),
+        [queryLookup[type]]: new Date().toISOString().split('T')[0],
       },
     };
     return $tmdb<PageResult<Media> | null>(`3/discover/${type}`, payload);
