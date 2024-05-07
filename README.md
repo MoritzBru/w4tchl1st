@@ -20,8 +20,6 @@
 ## TODOs
 
 - new features
-  - view transitions
-  - animations on list lazy load entering and on search
   - make watchlists sortable
   - person page
   - genre page
