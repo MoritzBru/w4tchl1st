@@ -7,11 +7,16 @@ export function useWatchLink() {
 
   const modal = useModal();
 
+  const watchLinkReplacements = {
+    id: '[:id]',
+    type: '[:type]',
+  };
+
   function getWatchUrl(item: MediaDetails, type: MediaType) {
     if (!watchLink.value) return;
     return watchLink.value
-      .replace('[:id]', item.id)
-      .replace('[:type]', type);
+      .replace(watchLinkReplacements.id, item.id)
+      .replace(watchLinkReplacements.type, type);
   }
 
   function changeWatchLink() {
@@ -20,6 +25,7 @@ export function useWatchLink() {
 
   return {
     watchLink,
+    watchLinkReplacements,
     getWatchUrl,
     changeWatchLink,
   };
