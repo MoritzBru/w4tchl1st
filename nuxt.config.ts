@@ -151,5 +151,10 @@ export default defineNuxtConfig({
         baseUrl: 'https://w4tchl1st.netlify.app',
       },
     },
+    pwa: {
+      manifest: {
+        start_url: 'https://w4tchl1st.netlify.app',
+      },
+    },
   },
 });
