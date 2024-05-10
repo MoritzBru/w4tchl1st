@@ -1,6 +1,8 @@
 import type { Config } from 'tailwindcss';
 import colors from 'tailwindcss/colors';
 import plugin from 'tailwindcss/plugin';
+// @ts-expect-error: no declaration exported lib
+import tailwindMaskImage from '@pyncz/tailwind-mask-image';
 
 export default <Partial<Config>>{
   theme: {
@@ -20,6 +22,7 @@ export default <Partial<Config>>{
     },
   },
   plugins: [
+    tailwindMaskImage,
     plugin(function ({ matchUtilities, theme }) {
       matchUtilities(
         { 'text-shadow': (value) => ({ textShadow: value }) },

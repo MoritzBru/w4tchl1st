@@ -5,9 +5,8 @@ const props = defineProps<{
   error: NuxtError;
 }>();
 
-// Waiting for https://github.com/nuxt/ui/pull/1695
-// const toast = useToast();
-// toast.clear();
+const toast = useToast();
+toast.clear();
 
 const handleError = () => clearError({ redirect: '/' });
 </script>
