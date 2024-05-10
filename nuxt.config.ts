@@ -59,6 +59,10 @@ export default defineNuxtConfig({
             },
           },
         },
+        {
+          urlPattern: '/',
+          handler: 'NetworkFirst',
+        },
       ],
     },
     manifest: {
