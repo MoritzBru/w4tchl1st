@@ -41,6 +41,7 @@ export default defineNuxtConfig({
     registerType: 'autoUpdate',
     workbox: {
       globPatterns: ['**/*.{js,css,html,png,svg,ico}'],
+      navigateFallback: '/',
       runtimeCaching: [
         {
           urlPattern: ({ url }) => url.href.includes('image.tmdb.org'),
