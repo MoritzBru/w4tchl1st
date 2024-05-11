@@ -1,6 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   ssr: false,
+  spaLoadingTemplate: './app/spa-loading-template.html',
   devtools: { enabled: true },
   modules: [
     '@nuxt/eslint',
@@ -141,11 +142,6 @@ export default defineNuxtConfig({
     runtimeConfig: {
       public: {
         baseUrl: 'https://w4tchl1st.netlify.app',
-      },
-    },
-    pwa: {
-      manifest: {
-        start_url: 'https://w4tchl1st.netlify.app',
       },
     },
   },

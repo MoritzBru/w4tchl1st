@@ -19,8 +19,7 @@
 
 ## TODOs
 
-- new features
-  - make watchlists sortable
-  - person page
-  - genre page
-  - i18n for app and api (usePreferredLanguages)
+- use nuxt/image for avatar in account dropdown
+- make watchlists sortable
+- person page
+- genre page

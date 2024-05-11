@@ -44,7 +44,7 @@ const links = [
         :class="[
           'flex-shrink-0 size-10 sm:size-8 transition-colors',
           isActive ? link.iconActive : link.icon,
-          isActive ? 'bg-gradient-to-r from-primary-500 to-secondary-500 inline-block bg-clip-content' : 'text-gray-400 dark:text-gray-500 group-hover:text-gray-700 dark:group-hover:text-gray-200',
+          isActive ? 'bg-gradient-to-r from-primary-500 to-secondary-500' : 'text-gray-400 dark:text-gray-500 group-hover:text-gray-700 dark:group-hover:text-gray-200',
         ]"
       />
     </template>
