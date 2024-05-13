@@ -19,6 +19,7 @@
 
 ## TODOs
 
+- add genres in the previews
 - use nuxt/image for avatar in account dropdown
 - make watchlists sortable
 - person page

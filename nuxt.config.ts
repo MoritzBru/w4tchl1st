@@ -27,6 +27,11 @@ export default defineNuxtConfig({
   image: {
     domains: ['image.tmdb.org'],
   },
+  nitro: {
+    prerender: {
+      routes: ['/'],
+    },
+  },
   pwa: {
     strategies: 'generateSW',
     registerType: 'autoUpdate',
@@ -40,7 +45,7 @@ export default defineNuxtConfig({
           options: {
             cacheName: 'tmdb-images',
             expiration: {
-              maxAgeSeconds: 60 * 60 * 24 * 30,
+              maxAgeSeconds: 60 * 60 * 24 * 180,
             },
             cacheableResponse: {
               statuses: [0, 200],
@@ -53,16 +58,12 @@ export default defineNuxtConfig({
           options: {
             cacheName: 'tmdb-api',
             expiration: {
-              maxAgeSeconds: 60 * 60 * 24 * 30,
+              maxAgeSeconds: 60 * 60 * 24 * 180,
             },
             cacheableResponse: {
               statuses: [0, 200],
             },
           },
-        },
-        {
-          urlPattern: '/',
-          handler: 'NetworkFirst',
         },
       ],
     },

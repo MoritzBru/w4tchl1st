@@ -1,4 +1,6 @@
 <script setup lang="ts">
+const { $pwa } = useNuxtApp();
+
 useHead({
   htmlAttrs: { lang: 'en' },
   link: [
@@ -51,6 +53,38 @@ useSeoMeta({
   ogImage: new URL('/og.png', runtimeConfig.public.baseUrl).toString(),
   twitterCard: 'summary_large_image',
 });
+
+const toast = useToast();
+
+onMounted(() => {
+  if ($pwa?.showInstallPrompt && !$pwa?.offlineReady && !$pwa?.needRefresh) {
+    toast.add({
+      title: 'Install',
+      description: 'App is ready to be installed as PWA.',
+      actions: [
+        { label: 'Install', click: $pwa.install, variant: 'solid', color: 'primary' },
+        { label: 'Close', click: $pwa.cancelInstall, variant: 'outline', color: 'secondary' },
+      ],
+      timeout: 0,
+    });
+  }
+});
+
+watch(
+  () => $pwa?.needRefresh,
+  () => {
+    if ($pwa?.needRefresh) {
+      toast.add({
+        title: 'Refresh',
+        description: 'New content available, click on reload button to update.',
+        actions: [
+          { label: 'Reload', click: $pwa?.updateServiceWorker, variant: 'solid', color: 'primary' },
+        ],
+        timeout: 0,
+      });
+    }
+  },
+);
 </script>
 
 <template>
