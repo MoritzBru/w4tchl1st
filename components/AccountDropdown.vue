@@ -8,6 +8,8 @@ const account = await getAccount(accountId.value);
 const { colorMode, switchColorMode } = useColormode();
 const { changeWatchLink } = useWatchLink();
 
+const img = useImage();
+
 const items = [
   [
     {
@@ -68,7 +70,7 @@ const items = [
       <UAvatar
         icon="i-ph-user-duotone"
         size="md"
-        :src="`${TMDB_IMAGE_BASE_THUMB}${account?.avatar?.tmdb?.avatar_path}`"
+        :src="img(`${TMDB_IMAGE_BASE_THUMB}${account?.avatar?.tmdb?.avatar_path}`)"
         :alt="account?.username"
       />
       <span class="sr-only">User Modal</span>

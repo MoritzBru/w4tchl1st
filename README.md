@@ -19,7 +19,6 @@
 
 ## TODOs
 
-- use nuxt/image for avatar in account dropdown
 - make watchlists sortable
 - offline experience (notification, disabled buttons,...)
 - person page
