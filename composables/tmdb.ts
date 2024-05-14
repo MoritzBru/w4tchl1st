@@ -1,6 +1,6 @@
 import type { NitroFetchOptions } from 'nitropack';
 import type {
-  Account, MediaType, PageResult, StatusResponse, PageParams, Media, MediaDetails, AccountStates, Search,
+  Account, MediaType, PageResult, StatusResponse, PageParams, Media, MediaDetails, AccountStates, Search, Genre,
 } from '~/types';
 
 export function useTmdb() {
@@ -105,6 +105,10 @@ export function useTmdb() {
     return $tmdb<PageResult<Search> | null>(`3/search/multi`, payload);
   }
 
+  function getGenres(type: MediaType) {
+    return $tmdb<{ genres: Genre[] } | null>(`3/genre/${type}/list`);
+  }
+
   return {
     $tmdb,
     getConfiguration,
@@ -117,5 +121,6 @@ export function useTmdb() {
     getDetails,
     getAccountStates,
     search,
+    getGenres,
   };
 }

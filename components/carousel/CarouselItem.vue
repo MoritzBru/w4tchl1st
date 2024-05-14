@@ -13,6 +13,9 @@ const type = getItemType(props.item);
 
 const { defaultBadges } = useItemBadges(props.item);
 
+const { getMappedGenres } = useGenres();
+const genres = getMappedGenres(props.item.genre_ids, type);
+
 const imgSrc = props.item.poster_path ? `${TMDB_IMAGE_BASE_THUMB}${props.item.poster_path}` : `/placeholder/${type}.svg`;
 </script>
 
@@ -37,6 +40,9 @@ const imgSrc = props.item.poster_path ? `${TMDB_IMAGE_BASE_THUMB}${props.item.po
       <h3 class="text-base truncate">
         {{ itemTitle }}
       </h3>
+      <p class="text-xs truncate opacity-75 mt-1">
+        {{ genres.map(({ name }) => name).join(', ') }}
+      </p>
       <BadgeList
         :badges="defaultBadges"
         class="mt-3 justify-between"

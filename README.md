@@ -19,8 +19,8 @@
 
 ## TODOs
 
-- add genres in the previews
 - use nuxt/image for avatar in account dropdown
 - make watchlists sortable
+- offline experience (notification, disabled buttons,...)
 - person page
 - genre page

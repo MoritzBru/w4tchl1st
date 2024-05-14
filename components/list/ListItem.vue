@@ -16,6 +16,9 @@ const type = getItemType(props.item);
 
 const { defaultBadges } = useItemBadges(props.item);
 
+const { getMappedGenres } = useGenres();
+const genres = getMappedGenres(props.item.genre_ids, type);
+
 const imgSrc = props.item.poster_path ? `${TMDB_IMAGE_BASE_THUMB}${props.item.poster_path}` : `/placeholder/${type}.svg`;
 </script>
 
@@ -40,9 +43,12 @@ const imgSrc = props.item.poster_path ? `${TMDB_IMAGE_BASE_THUMB}${props.item.po
         {{ itemTitle }}
         <UIcon
           :name="getItemIcon(props.item)"
-          class="text-2xl opacity-50"
+          class="text-3xl opacity-50"
         />
       </h3>
+      <p class="text-xs truncate opacity-75 mt-2">
+        {{ genres.map(({ name }) => name).join(', ') }}
+      </p>
       <p class="mt-3 text-sm font-thin max-w-prose line-clamp-2 sm:line-clamp-3 text-pretty">
         {{ props.item.overview }}
       </p>

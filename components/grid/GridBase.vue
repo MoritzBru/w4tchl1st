@@ -13,7 +13,7 @@ const props = defineProps<{
       v-for="(item, index) in props.items"
       :key="index"
     >
-      <GridItem :item="item" />
+      <CarouselItem :item="item" />
     </template>
   </div>
 </template>
